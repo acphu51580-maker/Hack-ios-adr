@@ -10,47 +10,47 @@
 body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .page{display:none}.page.active{display:block}
 
-/* ═══════ LOGIN ═══════ */
+/* LOGIN */
 #pageLogin{display:none;justify-content:center;align-items:center;min-height:100vh;padding:20px}
 #pageLogin.active{display:flex}
-.login-container{background:var(--panel);border:2px solid var(--border);border-radius:18px;padding:40px 30px;width:100%;max-width:440px;position:relative;box-shadow:0 0 60px rgba(255,255,255,.06)}
+.login-container{background:var(--panel);border:2px solid var(--border);border-radius:18px;padding:40px 30px;width:100%;max-width:440px;position:relative}
 .brand-name{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:6px 22px;border-radius:20px;font-weight:bold;font-size:13px;letter-spacing:3px;white-space:nowrap}
 .logo-box{text-align:center;margin-bottom:28px;margin-top:10px}
-.logo{font-size:55px;margin-bottom:8px;filter:drop-shadow(0 0 15px rgba(255,255,255,.3))}
+.logo{font-size:55px;margin-bottom:8px}
 .title{font-size:24px;letter-spacing:5px;margin-bottom:6px;font-weight:bold}
 .subtitle{color:var(--muted);font-size:12px;letter-spacing:2px}
 .input-group{position:relative;margin-bottom:16px}
-.input-group input{width:100%;padding:15px 50px 15px 16px;background:#000;border:2px solid var(--border);border-radius:12px;color:#fff;font-size:14px;outline:none;transition:.25s;letter-spacing:1px}
-.input-group input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.05)}
+.input-group input{width:100%;padding:15px 50px 15px 16px;background:#000;border:2px solid var(--border);border-radius:12px;color:#fff;font-size:14px;outline:none;letter-spacing:1px}
+.input-group input:focus{border-color:#fff}
 .input-group input::placeholder{color:#555}
-.paste-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:#222;border:1px solid var(--border);color:#fff;width:38px;height:38px;border-radius:9px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.2s}
+.paste-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:#222;border:1px solid var(--border);color:#fff;width:38px;height:38px;border-radius:9px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
 .paste-btn:hover{background:#fff;color:#000}
-.btn-activate{width:100%;padding:15px;background:#fff;color:#000;border:none;border-radius:12px;font-weight:bold;letter-spacing:3px;cursor:pointer;font-size:14px;transition:.25s}
+.btn-activate{width:100%;padding:15px;background:#fff;color:#000;border:none;border-radius:12px;font-weight:bold;letter-spacing:3px;cursor:pointer;font-size:14px}
 .btn-activate:hover{background:#ccc}
-.btn-buy-key{width:100%;padding:15px;margin-top:10px;background:linear-gradient(135deg,#0068ff,#0084ff);color:#fff;border:none;border-radius:12px;font-weight:bold;letter-spacing:2px;cursor:pointer;font-size:13px;transition:.25s;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 15px rgba(0,104,255,.3)}
-.btn-buy-key:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,104,255,.5)}
-.admin-link{text-align:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;cursor:pointer;letter-spacing:2px;transition:.2s}
+.btn-buy-key{width:100%;padding:15px;margin-top:10px;background:linear-gradient(135deg,#0068ff,#0084ff);color:#fff;border:none;border-radius:12px;font-weight:bold;letter-spacing:2px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 15px rgba(0,104,255,.3)}
+.btn-buy-key:hover{transform:translateY(-2px)}
+.admin-link{text-align:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;cursor:pointer;letter-spacing:2px}
 .admin-link:hover{color:#fff}
 .message{text-align:center;margin-top:14px;font-size:12px;min-height:16px;letter-spacing:1px}
 .message.error{color:#ff5555}
 .message.success{color:#55ff88}
 
-/* ═══════ MODAL ═══════ */
+/* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);justify-content:center;align-items:center;z-index:100;padding:20px;backdrop-filter:blur(4px)}
 .modal-overlay.active{display:flex}
 .modal{background:var(--panel);border:2px solid var(--border);border-radius:16px;padding:30px 24px;width:100%;max-width:420px;max-height:90vh;overflow-y:auto;animation:slideUp .3s}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .modal-title{text-align:center;margin-bottom:22px;letter-spacing:4px;font-size:16px;font-weight:bold}
-.modal input{width:100%;padding:13px 16px;margin-bottom:12px;background:#000;border:2px solid var(--border);border-radius:10px;color:#fff;outline:none;font-size:14px;letter-spacing:1px}
+.modal input{width:100%;padding:13px 16px;margin-bottom:12px;background:#000;border:2px solid var(--border);border-radius:10px;color:#fff;outline:none;font-size:14px}
 .modal input:focus{border-color:#fff}
-.modal input::placeholder{color:#555;letter-spacing:0}
+.modal input::placeholder{color:#555}
 .modal-buttons{display:flex;gap:10px;margin-top:14px}
-.btn-modal{flex:1;padding:13px;background:#222;color:#fff;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-weight:bold;letter-spacing:2px;font-size:12px;transition:.2s}
+.btn-modal{flex:1;padding:13px;background:#222;color:#fff;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-weight:bold;letter-spacing:2px;font-size:12px}
 .btn-modal:hover{background:#333}
 .btn-modal.primary{background:#fff;color:#000}
 .btn-modal.primary:hover{background:#ccc}
 
-/* ═══════ HEADER ═══════ */
+/* HEADER */
 .header{background:var(--panel);border-bottom:2px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .header-left{display:flex;align-items:center;gap:10px}
 .brand{font-size:18px;letter-spacing:3px;font-weight:bold}
@@ -58,132 +58,147 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .header-right{display:flex;align-items:center;gap:12px}
 .timer-box{background:#000;border:2px solid var(--border);border-radius:10px;padding:8px 14px;display:flex;align-items:center;gap:10px;font-size:13px}
 .timer-label{color:var(--muted);font-size:11px;letter-spacing:1px}
-.timer-value{color:#fff;font-weight:bold;font-family:monospace;font-size:14px;letter-spacing:1px}
-.timer-value.warning{color:#ff5555;animation:pulse 1s infinite}
-@keyframes pulse{50%{opacity:.5}}
-.logout-btn{background:#fff;color:#000;border:none;padding:9px 16px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px;letter-spacing:1px;transition:.2s}
+.timer-value{color:#fff;font-weight:bold;font-family:monospace;font-size:14px}
+.timer-value.warning{color:#ff5555}
+.logout-btn{background:#fff;color:#000;border:none;padding:9px 16px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}
 .logout-btn:hover{background:#ccc}
 
-/* ═══════ TABS ═══════ */
-.tabs{display:flex;gap:8px;padding:16px 20px;flex-wrap:wrap;max-width:1100px;margin:0 auto;width:100%}
-.tab{flex:1;min-width:110px;background:var(--panel);color:var(--muted);border:2px solid var(--border);padding:12px 8px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:11px;letter-spacing:1.5px;transition:.25s;display:flex;align-items:center;justify-content:center;gap:5px}
+/* ═══════ TABS - FIX NGANG VUÔNG ═══════ */
+.tabs{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:8px;
+  padding:16px 20px;
+  max-width:1100px;
+  margin:0 auto;
+  width:100%;
+}
+.tab{
+  background:var(--panel);
+  color:var(--muted);
+  border:2px solid var(--border);
+  padding:14px 6px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:11px;
+  letter-spacing:1px;
+  transition:.25s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  min-height:60px;
+}
 .tab:hover{color:#fff;border-color:#444}
 .tab.active{background:#fff;color:#000;border-color:#fff}
-.tab.admin-tab{background:#1a0f0f;border-color:#ff3333;color:#ff5555}
+.tab.admin-tab{
+  background:#1a0f0f;
+  border-color:#ff3333;
+  color:#ff5555;
+  grid-column:1 / -1;
+  min-height:auto;
+  padding:12px;
+  font-size:12px;
+  letter-spacing:2px;
+}
 .tab.admin-tab.active{background:#ff3333;color:#fff;border-color:#ff3333}
 
-/* ═══════ CONTENT ═══════ */
+/* Khi admin đăng nhập - tab admin + ĐV cùng hàng */
+.tabs.has-admin{
+  grid-template-columns:repeat(4, 1fr);
+}
+.tabs.has-admin .tab.admin-tab{
+  grid-column:auto;
+  min-height:60px;
+  padding:14px 6px;
+  font-size:11px;
+}
+
+/* CONTENT */
 .content{max-width:1100px;margin:0 auto;padding:0 20px 130px;width:100%}
 .tab-content{display:none}
 .tab-content.active{display:block;animation:fadeIn .3s}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .section-title{font-size:14px;letter-spacing:4px;margin-bottom:18px;border-left:4px solid #fff;padding-left:12px;text-transform:uppercase}
 
-/* ═══════ GRID ═══════ */
+/* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .grid-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:700px){.grid-row{grid-template-columns:1fr}}
-.card{background:var(--panel);border:2px solid var(--border);border-radius:12px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;transition:.25s}
+.card{background:var(--panel);border:2px solid var(--border);border-radius:12px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center}
 .card:hover{border-color:#fff}
 .card.on{border-color:#fff;background:#1f1f1f}
 .card-name{font-size:12px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase}
 
-/* ═══════ SWITCH ═══════ */
+/* SWITCH */
 .switch{width:54px;height:30px;background:#333;border-radius:15px;position:relative;cursor:pointer;transition:.3s;flex-shrink:0}
 .switch.active{background:#fff}
-.switch-ball{position:absolute;top:3px;left:3px;width:24px;height:24px;background:#fff;border-radius:50%;transition:.3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.switch-ball{position:absolute;top:3px;left:3px;width:24px;height:24px;background:#fff;border-radius:50%;transition:.3s}
 .switch.active .switch-ball{left:27px;background:#000}
 
-/* ═══════ ADMIN ═══════ */
+/* ADMIN */
 .key-create-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
-.key-btn{background:var(--panel);color:#fff;border:2px solid var(--border);padding:20px 10px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:13px;letter-spacing:2px;transition:.2s;display:flex;flex-direction:column;align-items:center;gap:6px}
+.key-btn{background:var(--panel);color:#fff;border:2px solid var(--border);padding:20px 10px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:13px;letter-spacing:2px;display:flex;flex-direction:column;align-items:center;gap:6px}
 .key-btn .icon{font-size:22px}
 .key-btn:hover{background:#fff;color:#000;border-color:#fff;transform:translateY(-2px)}
-.key-btn:active{transform:translateY(0)}
 .key-list{display:flex;flex-direction:column;gap:10px;max-height:500px;overflow-y:auto;padding-right:4px}
-.key-item{background:var(--panel);border:2px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;cursor:pointer;transition:.2s}
+.key-item{background:var(--panel);border:2px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;cursor:pointer}
 .key-item:hover{border-color:#fff;background:#1f1f1f}
 .key-code{font-family:monospace;font-weight:bold;letter-spacing:1px;font-size:14px}
-.key-info{color:var(--muted);font-size:11px;margin-top:4px;letter-spacing:1px}
-.key-status{padding:4px 10px;border-radius:6px;font-size:10px;font-weight:bold;letter-spacing:1px}
+.key-info{color:var(--muted);font-size:11px;margin-top:4px}
+.key-status{padding:4px 10px;border-radius:6px;font-size:10px;font-weight:bold}
 .key-status.valid{background:#fff;color:#000}
 .key-status.used{background:#333;color:#888}
 .key-status.expired{background:#ff3333;color:#fff}
 
-/* ═══════ SUCCESS KEY ═══════ */
+/* SUCCESS */
 .success-box{text-align:center}
 .success-icon{font-size:55px;margin-bottom:10px}
-.success-key{background:#000;border:2px dashed #fff;border-radius:12px;padding:16px;font-family:monospace;font-size:17px;letter-spacing:2px;font-weight:bold;margin:16px 0 10px;word-break:break-all;cursor:pointer;transition:.2s;user-select:none}
-.success-key:hover{background:#111;transform:scale(1.02)}
-.success-key:active{transform:scale(.98)}
-.copy-hint{color:var(--muted);font-size:11px;margin-bottom:18px;letter-spacing:1px}
+.success-key{background:#000;border:2px dashed #fff;border-radius:12px;padding:16px;font-family:monospace;font-size:17px;letter-spacing:2px;font-weight:bold;margin:16px 0 10px;word-break:break-all;cursor:pointer;user-select:none}
+.success-key:hover{background:#111}
+.copy-hint{color:var(--muted);font-size:11px;margin-bottom:18px}
 
-/* ═══════ NÚT KÍCH HOẠT HACK CỐ ĐỊNH DƯỚI ═══════ */
+/* NÚT HACK DƯỚI */
 .fixed-activate-bar{
   position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
+  bottom:0;left:0;right:0;
   padding:14px 20px calc(14px + env(safe-area-inset-bottom, 20px));
   background:linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,.95) 30%, rgba(10,10,10,1) 100%);
   z-index:50;
   pointer-events:none;
 }
 .btn-hack-activate{
-  width:100%;
-  max-width:1100px;
-  margin:0 auto;
-  display:block;
-  padding:18px;
-  background:#fff;
-  color:#000;
-  border:none;
-  border-radius:14px;
-  font-weight:bold;
-  letter-spacing:4px;
-  cursor:pointer;
-  font-size:15px;
-  transition:.2s;
-  box-shadow:0 8px 30px rgba(255,255,255,.25);
-  position:relative;
-  overflow:hidden;
-  pointer-events:auto;
+  width:100%;max-width:1100px;margin:0 auto;display:block;
+  padding:18px;background:#fff;color:#000;border:none;border-radius:14px;
+  font-weight:bold;letter-spacing:4px;cursor:pointer;font-size:15px;
+  transition:.2s;box-shadow:0 8px 30px rgba(255,255,255,.25);
+  position:relative;overflow:hidden;pointer-events:auto;
 }
 .btn-hack-activate::before{
-  content:'';
-  position:absolute;
-  top:0;left:-100%;
-  width:100%;height:100%;
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
   background:linear-gradient(90deg, transparent, rgba(0,0,0,.15), transparent);
   animation:shine 2.5s infinite;
 }
-@keyframes shine{
-  0%{left:-100%}
-  50%,100%{left:100%}
-}
-.btn-hack-activate:hover{background:#ddd;transform:translateY(-2px)}
-.btn-hack-activate:active{transform:translateY(0) scale(.98)}
-.btn-hack-activate.activated{
-  background:#55ff88;
-  color:#000;
-  box-shadow:0 8px 30px rgba(85,255,136,.4);
-}
+@keyframes shine{0%{left:-100%}50%,100%{left:100%}}
+.btn-hack-activate:hover{background:#ddd}
+.btn-hack-activate:active{transform:scale(.98)}
+.btn-hack-activate.activated{background:#55ff88;color:#000;box-shadow:0 8px 30px rgba(85,255,136,.4)}
 .btn-hack-activate.activated::before{display:none}
 
-/* ═══════ TOAST ═══════ */
+/* TOAST */
 .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(100px);background:#fff;color:#000;padding:12px 24px;border-radius:10px;font-size:13px;font-weight:bold;letter-spacing:1px;opacity:0;transition:.3s;z-index:999;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* ═══════ SCROLLBAR ═══════ */
 ::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:#000;border-radius:4px}
+::-webkit-scrollbar-track{background:#000}
 ::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:#555}
 
 @media(max-width:600px){
   .brand{font-size:15px}
   .timer-box{padding:6px 10px;font-size:11px}
-  .tab{min-width:80px;font-size:10px;padding:10px 4px}
+  .tab{font-size:10px;padding:12px 4px;min-height:56px;letter-spacing:.5px}
+  .tab.admin-tab{font-size:11px}
   .key-create-grid{grid-template-columns:repeat(2,1fr)}
   .btn-hack-activate{font-size:13px;padding:16px;letter-spacing:3px}
 }
@@ -191,7 +206,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 </head>
 <body>
 
-<!-- ═══════ TRANG LOGIN ═══════ -->
+<!-- LOGIN -->
 <div class="page active" id="pageLogin">
   <div class="login-container">
     <div class="brand-name">MR.PHUC</div>
@@ -202,7 +217,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
     </div>
     <div class="input-group">
       <input type="text" id="keyInput" placeholder="PHUC-XXX-XXX" autocomplete="off">
-      <button class="paste-btn" id="pasteBtn" title="Dán">📋</button>
+      <button class="paste-btn" id="pasteBtn">📋</button>
     </div>
     <button class="btn-activate" id="activateBtn">KÍCH HOẠT</button>
     <button class="btn-buy-key" id="buyKeyBtn">💬 BUY KEY - LIÊN HỆ NGAY</button>
@@ -211,7 +226,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 </div>
 
-<!-- ═══════ TRANG MENU ═══════ -->
+<!-- MENU -->
 <div class="page" id="pageMenu">
   <div class="header">
     <div class="header-left">
@@ -227,7 +242,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
     </div>
   </div>
 
-  <div class="tabs">
+  <div class="tabs" id="mainTabs">
     <button class="tab active" data-tab="modSkin">🎨 MOD SKIN</button>
     <button class="tab" data-tab="menuVip">👑 MENU VIP</button>
     <button class="tab" data-tab="aimLock">🎯 AIM LOCK</button>
@@ -236,7 +251,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 
   <div class="content">
-    <!-- MOD SKIN -->
     <div class="tab-content active" id="modSkin">
       <h3 class="section-title">Mod Skin</h3>
       <div class="grid">
@@ -246,7 +260,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
       </div>
     </div>
 
-    <!-- MENU VIP -->
     <div class="tab-content" id="menuVip">
       <h3 class="section-title">Menu Vip</h3>
       <div class="grid">
@@ -257,7 +270,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
       </div>
     </div>
 
-    <!-- AIM LOCK -->
     <div class="tab-content" id="aimLock">
       <h3 class="section-title">Aim Lock</h3>
       <div class="grid">
@@ -269,7 +281,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
       </div>
     </div>
 
-    <!-- ĐV + ĐỊCH (ô ngang) -->
     <div class="tab-content" id="dvDich">
       <h3 class="section-title">ĐV + Địch</h3>
       <div class="grid-row">
@@ -279,7 +290,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
       </div>
     </div>
 
-    <!-- ADMIN TAB -->
     <div class="tab-content" id="adminPanelTab">
       <h3 class="section-title">🛡 Tạo Key</h3>
       <div class="key-create-grid">
@@ -290,18 +300,17 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
         <button class="key-btn" data-days="60"><span class="icon">👑</span>KEY 60D</button>
         <button class="key-btn" data-days="999999"><span class="icon">♾️</span>VĨNH VIỄN</button>
       </div>
-      <h3 class="section-title">📋 Danh Sách Key <span style="font-size:10px;color:var(--muted);letter-spacing:1px">(click để copy)</span></h3>
+      <h3 class="section-title">📋 Danh Sách Key <span style="font-size:10px;color:var(--muted)">(click để copy)</span></h3>
       <div class="key-list" id="keyList"></div>
     </div>
   </div>
 
-  <!-- ═══════ NÚT KÍCH HOẠT HACK CỐ ĐỊNH DƯỚI ═══════ -->
   <div class="fixed-activate-bar">
     <button class="btn-hack-activate" id="hackActivateBtn">⚡ KÍCH HOẠT HACK</button>
   </div>
 </div>
 
-<!-- ═══════ MODAL ADMIN LOGIN ═══════ -->
+<!-- MODAL ADMIN LOGIN -->
 <div class="modal-overlay" id="adminModal">
   <div class="modal">
     <div class="modal-title">⚙ ADMIN LOGIN</div>
@@ -314,7 +323,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 </div>
 
-<!-- ═══════ MODAL KEY CREATED ═══════ -->
+<!-- MODAL KEY CREATED -->
 <div class="modal-overlay" id="keyCreatedModal">
   <div class="modal">
     <div class="success-box">
@@ -387,22 +396,19 @@ function showPage(id){
   window.scrollTo(0,0);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   STATE
-   ═══════════════════════════════════════════════════════════ */
 let isAdmin = false;
 let timerInterval = null;
 let menuInitialized = false;
 
 /* ═══════════════════════════════════════════════════════════
-   NÚT BUY KEY -> ZALO
+   BUY KEY
    ═══════════════════════════════════════════════════════════ */
 document.getElementById('buyKeyBtn').addEventListener('click', () => {
   window.open(ZALO_URL, '_blank');
 });
 
 /* ═══════════════════════════════════════════════════════════
-   LOGIN - DÁN KEY
+   DÁN KEY
    ═══════════════════════════════════════════════════════════ */
 const keyInput = document.getElementById('keyInput');
 const messageEl = document.getElementById('message');
@@ -434,7 +440,6 @@ document.getElementById('activateBtn').addEventListener('click', () => {
   const now = Date.now();
   if (found.expireAt && now > found.expireAt) return showMsg(messageEl, '❌ Key đã hết hạn!', 'error');
 
-  // Đánh dấu đã dùng
   allKeys[key].used = true;
   allKeys[key].usedAt = now;
   saveAllKeys(allKeys);
@@ -480,7 +485,9 @@ document.getElementById('adminLoginBtn').addEventListener('click', ()=>{
     showPage('pageMenu');
     startMenuSession();
 
+    // Hiện tab admin + đổi layout
     document.getElementById('adminTabBtn').style.display = 'flex';
+    document.getElementById('mainTabs').classList.add('has-admin');
     document.getElementById('timerBox').style.display = 'none';
 
     setTimeout(()=>document.getElementById('adminTabBtn').click(), 100);
@@ -502,7 +509,6 @@ function startMenuSession(){
     if (isAdmin) return;
     if (!expireAt || expireAt === 0){
       timerDisplay.textContent = 'VĨNH VIỄN ∞';
-      timerDisplay.classList.remove('warning');
       return;
     }
     const left = expireAt - Date.now();
@@ -531,7 +537,6 @@ function startMenuSession(){
   if (menuInitialized) return;
   menuInitialized = true;
 
-  // TABS
   document.querySelectorAll('.tab').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
@@ -542,7 +547,6 @@ function startMenuSession(){
     });
   });
 
-  // SWITCH
   document.querySelectorAll('.switch').forEach(sw=>{
     sw.addEventListener('click', ()=>{
       sw.classList.toggle('active');
@@ -550,25 +554,22 @@ function startMenuSession(){
       if (card) card.classList.toggle('on', sw.classList.contains('active'));
       const name = sw.dataset.switch;
       const on = sw.classList.contains('active');
-      console.log(`[MENU] ${name} = ${on ? 'BẬT' : 'TẮT'}`);
       showToast(`${on ? '🟢 BẬT' : '⚫ TẮT'} • ${name}`);
     });
   });
 }
 
 /* ═══════════════════════════════════════════════════════════
-   NÚT KÍCH HOẠT HACK CỐ ĐỊNH DƯỚI
+   NÚT KÍCH HOẠT HACK
    ═══════════════════════════════════════════════════════════ */
 const hackActivateBtn = document.getElementById('hackActivateBtn');
 let hackActivated = false;
 
 hackActivateBtn.addEventListener('click', () => {
   if (hackActivated) {
-    // HỦY
     hackActivated = false;
     hackActivateBtn.classList.remove('activated');
     hackActivateBtn.textContent = '⚡ KÍCH HOẠT HACK';
-    // Tắt hết switch
     document.querySelectorAll('.switch').forEach(sw => {
       sw.classList.remove('active');
       const card = sw.closest('.card');
@@ -576,7 +577,6 @@ hackActivateBtn.addEventListener('click', () => {
     });
     showToast('⚫ ĐÃ HỦY HACK');
   } else {
-    // KÍCH HOẠT
     hackActivated = true;
     hackActivateBtn.classList.add('activated');
     hackActivateBtn.textContent = '✅ ĐÃ KÍCH HOẠT - BẤM ĐỂ HỦY';
@@ -596,23 +596,24 @@ document.getElementById('menuLogoutBtn').addEventListener('click', ()=>{
     hackActivated = false;
     hackActivateBtn.classList.remove('activated');
     hackActivateBtn.textContent = '⚡ KÍCH HOẠT HACK';
+    document.getElementById('mainTabs').classList.remove('has let-admin');
     sessionStorage.removeItem('isAdmin');
     showPage('pageLogin');
   }
 });
 
-/* ═══════════════════════════════════════════════════════════
+/* ═════════════════════════════════════════ status══════════════════
    ADMIN - TẠO KEY
    ═══════════════════════════════════════════════════════════ */
-document.querySelectorAll('.key-btn').forEach(btn=>{
+ =document.querySelectorAll('.key-btn').forEach(btn=>{
   btn.addEventListener('click', async () => {
     const days = parseInt(btn.dataset.days);
-    const code = genKey();
+    const ' code = genKey();
     const now = Date.now();
-    const expireAt = days >= 999999 ? null : now + days * 24 * 60 * 60 * 1000;
+    const expireAt = days >= 999999 ? null : now + days * 24 *valid 60 * 60 * 1000;
 
     const allKeys = getAllKeys();
-    allKeys[code] = { days, createdAt: now, expireAt, used: false };
+    allKeys[code] = { days, createdAt',: now, expireAt, used: false };
     saveAllKeys(allKeys);
 
     const copied = await copyToClipboard(code);
@@ -668,7 +669,7 @@ function renderKeys(){
   keyList.innerHTML = codes.map(code=>{
     const k = allKeys[code];
     const now = Date.now();
-    let status = 'valid', label = 'HỢP LỆ';
+    label = 'HỢP LỆ';
     if (k.used) { status = 'used'; label = 'ĐÃ DÙNG'; }
     else if (k.expireAt && now > k.expireAt) { status = 'expired'; label = 'HẾT HẠN'; }
 
@@ -717,6 +718,7 @@ document.querySelectorAll('.modal-overlay').forEach(o=>{
       if (activeKey === 'ADMIN_MODE') {
         isAdmin = true;
         document.getElementById('adminTabBtn').style.display = 'flex';
+        document.getElementById('mainTabs').classList.add('has-admin');
         document.getElementById('timerBox').style.display = 'none';
       }
       startMenuSession();
