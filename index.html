@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr.Phuc - Key System</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Consolas, monospace; }
+
+:root {
+  --bg: #0a0a0a;
+  --panel: #141414;
+  --panel2: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #ffffff;
+  --muted: #888;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ===== LOGIN BOX ===== */
+.login-container {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 0 60px rgba(255,255,255,0.06);
+  position: relative;
+}
+
+.brand-name {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #000;
+  padding: 6px 22px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+
+.logo-box { text-align: center; margin-bottom: 28px; margin-top: 10px; }
+.logo {
+  font-size: 55px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+}
+.title {
+  font-size: 24px;
+  letter-spacing: 5px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+.subtitle { color: var(--muted); font-size: 12px; letter-spacing: 2px; }
+
+/* ===== INPUT ===== */
+.input-group {
+  position: relative;
+  margin-bottom: 16px;
+}
+.input-group input {
+  width: 100%;
+  padding: 15px 50px 15px 16px;
+  background: #000;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: .25s;
+  letter-spacing: 1px;
+}
+.input-group input:focus { border-color: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,0.05); }
+.input-group input::placeholder { color: #555; letter-spacing: 0; }
+
+.paste-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #222;
+  border: 1px solid var(--border);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.paste-btn:hover { background: #fff; color: #000; }
+.paste-btn:active { transform: translateY(-50%) scale(0.92); }
+
+/* ===== BUTTON ===== */
+.btn-activate {
+  width: 100%;
+  padding: 15px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: .25s;
+  margin-bottom: 6px;
+}
+.btn-activate:hover { background: #ccc; transform: translateY(-1px); }
+.btn-activate:active { transform: translateY(0); }
+
+/* ===== ADMIN LINK ===== */
+.admin-link {
+  text-align: center;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: .2s;
+  user-select: none;
+}
+.admin-link:hover { color: #fff; }
+
+/* ===== MESSAGE ===== */
+.message {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 12px;
+  min-height: 16px;
+  letter-spacing: 1px;
+}
+.message.error { color: #ff5555; }
+.message.success { color: #55ff88; }
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 30px 24px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp .3s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-title {
+  text-align: center;
+  margin-bottom: 22px;
+  letter-spacing: 4px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.modal input {
+  width: 100%;
+  padding: 13px 16px;
+  margin-bottom: 12px;
+  background: #000;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: .2s;
+}
+.modal input:focus { border-color: #fff; }
+.modal input::placeholder { color: #555; letter-spacing: 0; }
+
+.modal-buttons { display: flex; gap: 10px; margin-top: 14px; }
+.btn-modal {
+  flex: 1;
+  padding: 13px;
+  background: #222;
+  color: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 12px;
+  transition: .2s;
+}
+.btn-modal:hover { background: #333; }
+.btn-modal.primary { background: #fff; color: #000; }
+.btn-modal.primary:hover { background: #ccc; }
+
+/* ===== ADMIN PANEL ===== */
+.section-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 14px;
+  border-left: 4px solid #fff;
+  padding-left: 10px;
+  color: #fff;
+}
+.key-create-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+@media (max-width: 480px) {
+  .key-create-grid { grid-template-columns: repeat(2, 1fr); }
+  .title { font-size: 20px; letter-spacing: 3px; }
+}
+
+.key-btn {
+  background: var(--panel2);
+  color: #fff;
+  border: 2px solid var(--border);
+  padding: 16px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: .2s;
+}
+.key-btn:hover { background: #fff; color: #000; border-color: #fff; transform: translateY(-2px); }
+.key-btn:active { transform: translateY(0); }
+
+.key-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.key-item {
+  background: var(--panel2);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  transition: .2s;
+  cursor: pointer;
+}
+.key-item:hover { border-color: #fff; background: #1f1f1f; }
+.key-code {
+  font-family: monospace;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+.key-info { color: var(--muted); font-size: 10px; margin-top: 4px; letter-spacing: 1px; }
+.key-status {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.key-status.used { background: #333; color: #888; }
+.key-status.valid { background: #fff; color: #000; }
+
+/* ===== SUCCESS MODAL ===== */
+.success-box { text-align: center; }
+.success-icon { font-size: 55px; margin-bottom: 10px; }
+.success-key {
+  background: #000;
+  border: 2px dashed #fff;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: monospace;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin: 16px 0 10px;
+  word-break: break-all;
+  cursor: pointer;
+  transition: .2s;
+  user-select: none;
+}
+.success-key:hover { background: #111; transform: scale(1.02); }
+.success-key:active { transform: scale(0.98); }
+.copy-hint { color: var(--muted); font-size: 11px; margin-bottom: 18px; letter-spacing: 1px; transition: .2s; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #000; border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* ===== TOAST COPY ===== */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #fff;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: .3s;
+  z-index: 999;
+  pointer-events: none;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+
+  <!-- ===== LOGIN BOX ===== -->
+  <div class="login-container">
+    <div class="brand-name">MR.PHUC</div>
+
+    <div class="logo-box">
+      <div class="logo">🔐</div>
+      <div class="title">KEY SYSTEM</div>
+      <div class="subtitle">NHẬP KEY ĐỂ KÍCH HOẠT</div>
+    </div>
+
+    <div class="input-group">
+      <input type="text" id="keyInput" placeholder="PHUC-XXX-XXX" autocomplete="off">
+      <button class="paste-btn" id="pasteBtn" title="Dán từ clipboard">📋</button>
+    </div>
+
+    <button class="btn-activate" id="activateBtn">KÍCH HOẠT</button>
+
+    <div class="message" id="message"></div>
+
+    <div class="admin-link" id="openAdminBtn">⚙ ADMIN LOGIN</div>
+  </div>
+
+  <!-- ===== MODAL ĐĂNG NHẬP ADMIN ===== -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal">
+      <div class="modal-title">⚙ ADMIN LOGIN</div>
+      <input type="text" id="adminUser" placeholder="Tên đăng nhập" value="admin">
+      <input type="password" id="adminPass" placeholder="Mật khẩu">
+      <div class="modal-buttons">
+        <button class="btn-modal primary" id="adminLoginBtn">ĐĂNG NHẬP</button>
+        <button class="btn-modal" id="adminCloseBtn">ĐÓNG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL ADMIN PANEL ===== -->
+  <div class="modal-overlay" id="adminPanel">
+    <div class="modal" style="max-width:600px;">
+      <div class="modal-title">🛡 ADMIN PANEL</div>
+
+      <div class="section-label">TẠO KEY MỚI</div>
+      <div class="key-create-grid">
+        <button class="key-btn" data-days="1">KEY 1D</button>
+        <button class="key-btn" data-days="3">KEY 3D</button>
+        <button class="key-btn" data-days="7">KEY 7D</button>
+        <button class="key-btn" data-days="30">KEY 30D</button>
+        <button class="key-btn" data-days="60">KEY 60D</button>
+        <button class="key-btn" data-days="999999">VĨNH VIỄN</button>
+      </div>
+
+      <div class="section-label">DANH SÁCH KEY (click để copy)</div>
+      <div class="key-list" id="keyList"></div>
+
+      <div class="modal-buttons" style="margin-top:20px;">
+        <button class="btn-modal" id="adminLogoutBtn">ĐĂNG XUẤT</button>
+        <button class="btn-modal" id="adminPanelClose">ĐÓNG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL THÔNG BÁO KEY ĐÃ TẠO ===== -->
+  <div class="modal-overlay" id="keyCreatedModal">
+    <div class="modal" style="max-width:400px;">
+      <div class="success-box">
+        <div class="success-icon">✅</div>
+        <div class="modal-title" style="margin-bottom:8px;">TẠO KEY THÀNH CÔNG</div>
+        <div class="success-key" id="createdKeyText">----</div>
+        <div class="copy-hint" id="copyHint">👆 Nhấn vào key để copy</div>
+        <button class="btn-modal primary" id="keyCreatedClose" style="width:100%;">ĐÓNG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast">✅ ĐÃ COPY KEY!</div>
+
+<script>
+/* ============================================================
+   CONFIG - MR.PHUC
+   ============================================================ */
+const ADMIN_USER = 'admin';
+const ADMIN_PASS = 'phc51580';
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+
+// Tạo key dạng: PHUC-XXX-XXX (XXX = 3 ký tự A-Z0-9)
+function genKey() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const block = () => {
+    let s = '';
+    for (let i = 0; i < 3; i++) s += chars[Math.floor(Math.random() * chars.length)];
+    return s;
+  };
+  return `PHUC-${block()}-${block()}`;
+}
+
+function getKeys() { return JSON.parse(localStorage.getItem('keys') || '[]'); }
+function saveKeys(arr) { localStorage.setItem('keys', JSON.stringify(arr)); }
+function showMsg(el, text, type) {
+  el.textContent = text;
+  el.className = 'message ' + (type || '');
+}
+
+// Toast thông báo copy
+const toastEl = document.getElementById('toast');
+let toastTimer = null;
+function showToast(text) {
+  toastEl.textContent = text || '✅ ĐÃ COPY KEY!';
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove('show'), 1800);
+}
+
+// Copy vào clipboard (fallback cho trình duyệt cũ)
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (e) {
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch(_) {}
+    document.body.removeChild(ta);
+    return ok;
+  }
+}
+
+/* ============================================================
+   NÚT DÁN KEY
+   ============================================================ */
+const keyInput = document.getElementById('keyInput');
+const messageEl = document.getElementById('message');
+const activateBtn = document.getElementById('activateBtn');
+
+document.getElementById('pasteBtn').addEventListener('click', async () => {
+  try {
+    const text = await navigator.clipboard.readText();
+    keyInput.value = text.trim().toUpperCase();
+    showMsg(messageEl, '📋 Đã dán key!', 'success');
+    setTimeout(() => showMsg(messageEl, '', ''), 1500);
+  } catch (e) {
+    showMsg(messageEl, '❌ Không thể dán - cấp quyền clipboard!', 'error');
+  }
+});
+
+/* ============================================================
+   KÍCH HOẠT KEY
+   ============================================================ */
+activateBtn.addEventListener('click', () => {
+  const key = keyInput.value.trim().toUpperCase();
+  if (!key) return showMsg(messageEl, '⚠ Vui lòng nhập key!', 'error');
+
+  const keys = getKeys();
+  const found = keys.find(k => k.code === key);
+
+  if (!found) return showMsg(messageEl, '❌ Key không tồn tại!', 'error');
+  if (found.used) return showMsg(messageEl, '❌ Key đã được sử dụng!', 'error');
+
+  const now = Date.now();
+  if (found.expireAt && now > found.expireAt) {
+    return showMsg(messageEl, '❌ Key đã hết hạn!', 'error');
+  }
+
+  // Đánh dấu đã dùng
+  found.used = true;
+  found.usedAt = now;
+  saveKeys(keys);
+
+  const typeLabel = found.days >= 999999 ? 'VĨNH VIỄN' : found.days + ' NGÀY';
+  showMsg(messageEl, `✅ Kích hoạt thành công! Gói: ${typeLabel}`, 'success');
+  keyInput.value = '';
+});
+
+keyInput.addEventListener('keypress', e => {
+  if (e.key === 'Enter') activateBtn.click();
+});
+
+/* ============================================================
+   ADMIN LOGIN
+   ============================================================ */
+const adminModal = document.getElementById('adminModal');
+const adminPanel = document.getElementById('adminPanel');
+const adminUser = document.getElementById('adminUser');
+const adminPass = document.getElementById('adminPass');
+
+document.getElementById('openAdminBtn').addEventListener('click', () => {
+  adminModal.classList.add('active');
+  adminPass.value = '';
+  setTimeout(() => adminPass.focus(), 100);
+});
+
+document.getElementById('adminCloseBtn').addEventListener('click', () => {
+  adminModal.classList.remove('active');
+});
+
+document.getElementById('adminLoginBtn').addEventListener('click', () => {
+  const u = adminUser.value.trim();
+  const p = adminPass.value;
+  if (u === ADMIN_USER && p === ADMIN_PASS) {
+    adminModal.classList.remove('active');
+    adminPanel.classList.add('active');
+    renderKeys();
+  } else {
+    alert('❌ Sai tên đăng nhập hoặc mật khẩu!');
+    adminPass.value = '';
+  }
+});
+
+adminPass.addEventListener('keypress', e => {
+  if (e.key === 'Enter') document.getElementById('adminLoginBtn').click();
+});
+
+document.getElementById('adminLogoutBtn').addEventListener('click', () => {
+  adminPanel.classList.remove('active');
+  alert('👋 Đã đăng xuất!');
+});
+
+document.getElementById('adminPanelClose').addEventListener('click', () => {
+  adminPanel.classList.remove('active');
+});
+
+/* ============================================================
+   ADMIN - TẠO KEY
+   ============================================================ */
+document.querySelectorAll('.key-btn').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const days = parseInt(btn.dataset.days);
+    const code = genKey(); // PHUC-XXX-XXX
+    const now = Date.now();
+    const expireAt = days >= 999999 ? null : now + days * 24 * 60 * 60 * 1000;
+
+    const keys = getKeys();
+    keys.push({
+      code,
+      days,
+      createdAt: now,
+      expireAt,
+      used: false
+    });
+    saveKeys(keys);
+
+    // === TỰ ĐỘNG COPY NGAY KHI TẠO XONG ===
+    const copied = await copyToClipboard(code);
+
+    // Hiện modal key vừa tạo
+    document.getElementById('createdKeyText').textContent = code;
+    document.getElementById('keyCreatedModal').classList.add('active');
+
+    const hint = document.getElementById('copyHint');
+    if (copied) {
+      hint.textContent = '✅ Đã tự động copy vào clipboard!';
+      hint.style.color = '#55ff88';
+      showToast('✅ ĐÃ COPY KEY!');
+    } else {
+      hint.textContent = '👆 Nhấn vào key để copy';
+      hint.style.color = '#888';
+    }
+
+    renderKeys();
+  });
+});
+
+/* ============================================================
+   CLICK VÀO KEY VỪA TẠO -> COPY LẠI
+   ============================================================ */
+document.getElementById('createdKeyText').addEventListener('click', async function() {
+  const code = this.textContent;
+  const ok = await copyToClipboard(code);
+  const hint = document.getElementById('copyHint');
+  if (ok) {
+    hint.textContent = '✅ Đã copy lại vào clipboard!';
+    hint.style.color = '#55ff88';
+    showToast('✅ ĐÃ COPY KEY!');
+    setTimeout(() => {
+      hint.textContent = '👆 Nhấn vào key để copy';
+      hint.style.color = '#888';
+    }, 1500);
+  } else {
+    hint.textContent = '❌ Không thể copy!';
+    hint.style.color = '#ff5555';
+  }
+});
+
+document.getElementById('keyCreatedClose').addEventListener('click', () => {
+  document.getElementById('keyCreatedModal').classList.remove('active');
+});
+
+/* ============================================================
+   RENDER KEY LIST (click từng key để copy)
+   ============================================================ */
+function renderKeys() {
+  const keyList = document.getElementById('keyList');
+  const keys = getKeys().slice().reverse();
+
+  if (!keys.length) {
+    keyList.innerHTML = '<div class="key-info" style="text-align:center;padding:20px;">Chưa có key nào</div>';
+    return;
+  }
+
+  keyList.innerHTML = keys.map(k => {
+    const status = k.used ? 'used' : 'valid';
+    const label = k.used ? 'ĐÃ DÙNG' : 'HỢP LỆ';
+    const type = k.days >= 999999 ? 'VĨNH VIỄN' : k.days + 'D';
+    const expire = k.expireAt
+      ? new Date(k.expireAt).toLocaleString('vi-VN')
+      : 'Vĩnh viễn';
+    return `
+      <div class="key-item" data-code="${k.code}">
+        <div>
+          <div class="key-code">${k.code}</div>
+          <div class="key-info">${type} • Hết hạn: ${expire}</div>
+        </div>
+        <span class="key-status ${status}">${label}</span>
+      </div>
+    `;
+  }).join('');
+
+  // Gán sự kiện click copy cho từng key trong list
+  keyList.querySelectorAll('.key-item').forEach(item => {
+    item.addEventListener('click', async () => {
+      const code = item.dataset.code;
+      const ok = await copyToClipboard(code);
+      if (ok) showToast('✅ ĐÃ COPY: ' + code);
+    });
+  });
+}
+
+/* ============================================================
+   ĐÓNG MODAL KHI CLICK NGOÀI
+   ============================================================ */
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) overlay.classList.remove('active');
+  });
+});
+</script>
+</body>
+</html>
