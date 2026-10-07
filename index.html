@@ -9,7 +9,6 @@
 :root{--bg:#0a0a0a;--panel:#141414;--border:#2a2a2a;--text:#fff;--muted:#888}
 body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .page{display:none}.page.active{display:block}
-
 #pageLogin{display:none;justify-content:center;align-items:center;min-height:100vh;padding:20px}
 #pageLogin.active{display:flex}
 .login-container{background:var(--panel);border:2px solid var(--border);border-radius:18px;padding:40px 30px;width:100%;max-width:440px;position:relative}
@@ -34,7 +33,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .message{text-align:center;margin-top:14px;font-size:12px;min-height:16px;letter-spacing:1px}
 .message.error{color:#ff5555}
 .message.success{color:#55ff88}
-
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);justify-content:center;align-items:center;z-index:100;padding:20px;backdrop-filter:blur(4px)}
 .modal-overlay.active{display:flex}
 .modal{background:var(--panel);border:2px solid var(--border);border-radius:16px;padding:30px 24px;width:100%;max-width:420px;max-height:90vh;overflow-y:auto;animation:slideUp .3s}
@@ -48,7 +46,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .btn-modal:hover{background:#333}
 .btn-modal.primary{background:#fff;color:#000}
 .btn-modal.primary:hover{background:#ccc}
-
 .header{background:var(--panel);border-bottom:2px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .header-left{display:flex;align-items:center;gap:10px}
 .brand{font-size:18px;letter-spacing:3px;font-weight:bold}
@@ -60,7 +57,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .timer-value.warning{color:#ff5555}
 .logout-btn{background:#fff;color:#000;border:none;padding:9px 16px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}
 .logout-btn:hover{background:#ccc}
-
 .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:16px 20px;max-width:1100px;margin:0 auto;width:100%}
 .tab{background:var(--panel);color:var(--muted);border:2px solid var(--border);padding:14px 6px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:11px;letter-spacing:1px;transition:.25s;display:flex;align-items:center;justify-content:center;text-align:center;min-height:60px}
 .tab:hover{color:#fff;border-color:#444}
@@ -68,13 +64,11 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .tab.admin-tab{background:#1a0f0f;border-color:#ff3333;color:#ff5555;grid-column:1 / -1;min-height:auto;padding:12px;font-size:12px;letter-spacing:2px}
 .tab.admin-tab.active{background:#ff3333;color:#fff;border-color:#ff3333}
 .tabs.has-admin .tab.admin-tab{grid-column:auto;min-height:60px;padding:14px 6px;font-size:11px}
-
 .content{max-width:1100px;margin:0 auto;padding:0 20px 130px;width:100%}
 .tab-content{display:none}
 .tab-content.active{display:block;animation:fadeIn .3s}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .section-title{font-size:14px;letter-spacing:4px;margin-bottom:18px;border-left:4px solid #fff;padding-left:12px;text-transform:uppercase}
-
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .grid-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:700px){.grid-row{grid-template-columns:1fr}}
@@ -82,12 +76,10 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .card:hover{border-color:#fff}
 .card.on{border-color:#fff;background:#1f1f1f}
 .card-name{font-size:12px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase}
-
 .switch{width:54px;height:30px;background:#333;border-radius:15px;position:relative;cursor:pointer;transition:.3s;flex-shrink:0}
 .switch.active{background:#fff}
 .switch-ball{position:absolute;top:3px;left:3px;width:24px;height:24px;background:#fff;border-radius:50%;transition:.3s}
 .switch.active .switch-ball{left:27px;background:#000}
-
 .key-create-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
 .key-btn{background:var(--panel);color:#fff;border:2px solid var(--border);padding:20px 10px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:13px;letter-spacing:2px;display:flex;flex-direction:column;align-items:center;gap:6px}
 .key-btn .icon{font-size:22px}
@@ -102,50 +94,29 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .key-status.valid{background:#fff;color:#000}
 .key-status.used{background:#333;color:#888}
 .key-status.expired{background:#ff3333;color:#fff}
-
 .success-box{text-align:center}
 .success-icon{font-size:55px;margin-bottom:10px}
 .success-key{background:#000;border:2px dashed #fff;border-radius:12px;padding:16px;font-family:monospace;font-size:17px;letter-spacing:2px;font-weight:bold;margin:16px 0 10px;word-break:break-all;cursor:pointer;user-select:none}
 .success-key:hover{background:#111}
 .copy-hint{color:var(--muted);font-size:11px;margin-bottom:18px}
-
-.fixed-activate-bar{
-  position:fixed;bottom:0;left:0;right:0;
-  padding:14px 20px calc(14px + env(safe-area-inset-bottom, 20px));
-  background:linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,.95) 30%, rgba(10,10,10,1) 100%);
-  z-index:50;pointer-events:none;
-}
-.btn-hack-activate{
-  width:100%;max-width:1100px;margin:0 auto;display:block;
-  padding:18px;background:#fff;color:#000;border:none;border-radius:14px;
-  font-weight:bold;letter-spacing:4px;cursor:pointer;font-size:15px;
-  transition:.2s;box-shadow:0 8px 30px rgba(255,255,255,.25);
-  position:relative;overflow:hidden;pointer-events:auto;
-}
-.btn-hack-activate::before{
-  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg, transparent, rgba(0,0,0,.15), transparent);
-  animation:shine 2.5s infinite;
-}
+.fixed-activate-bar{position:fixed;bottom:0;left:0;right:0;padding:14px 20px calc(14px + env(safe-area-inset-bottom, 20px));background:linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,.95) 30%, rgba(10,10,10,1) 100%);z-index:50;pointer-events:none}
+.btn-hack-activate{width:100%;max-width:1100px;margin:0 auto;display:block;padding:18px;background:#fff;color:#000;border:none;border-radius:14px;font-weight:bold;letter-spacing:4px;cursor:pointer;font-size:15px;transition:.2s;box-shadow:0 8px 30px rgba(255,255,255,.25);position:relative;overflow:hidden;pointer-events:auto}
+.btn-hack-activate::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg, transparent, rgba(0,0,0,.15), transparent);animation:shine 2.5s infinite}
 @keyframes shine{0%{left:-100%}50%,100%{left:100%}}
 .btn-hack-activate:hover{background:#ddd}
 .btn-hack-activate:active{transform:scale(.98)}
 .btn-hack-activate.activated{background:#55ff88;color:#000;box-shadow:0 8px 30px rgba(85,255,136,.4)}
 .btn-hack-activate.activated::before{display:none}
-
 .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(100px);background:#fff;color:#000;padding:12px 24px;border-radius:10px;font-size:13px;font-weight:bold;letter-spacing:1px;opacity:0;transition:.3s;z-index:999;pointer-events:none;white-space:nowrap;max-width:90%;overflow:hidden;text-overflow:ellipsis}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
 .loading-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;justify-content:center;align-items:center;z-index:9999;flex-direction:column;gap:16px;backdrop-filter:blur(4px)}
 .loading-overlay.active{display:flex}
 .spinner{width:48px;height:48px;border:4px solid #333;border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading-text{color:#fff;font-size:12px;letter-spacing:3px;text-align:center;padding:0 20px}
-
 ::-webkit-scrollbar{width:8px}
 ::-webkit-scrollbar-track{background:#000}
 ::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
-
 @media(max-width:600px){
   .brand{font-size:15px}
   .timer-box{padding:6px 10px;font-size:11px}
@@ -163,7 +134,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   <div class="loading-text" id="loadingText">ĐANG XỬ LÝ...</div>
 </div>
 
-<!-- LOGIN -->
 <div class="page active" id="pageLogin">
   <div class="login-container">
     <div class="brand-name">MR.PHUC</div>
@@ -183,7 +153,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 </div>
 
-<!-- MENU -->
 <div class="page" id="pageMenu">
   <div class="header">
     <div class="header-left">
@@ -243,7 +212,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
         <div class="card"><span class="card-name">ĐV Súng</span><div class="switch" data-switch="dv_sung"><div class="switch-ball"></div></div></div>
       </div>
     </div>
-
     <div class="tab-content" id="adminPanelTab">
       <h3 class="section-title">🛡 Tạo Key</h3>
       <div class="key-create-grid">
@@ -264,7 +232,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 </div>
 
-<!-- MODAL ADMIN LOGIN -->
 <div class="modal-overlay" id="adminModal">
   <div class="modal">
     <div class="modal-title">⚙ ADMIN LOGIN</div>
@@ -277,7 +244,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 </div>
 
-<!-- MODAL KEY CREATED -->
 <div class="modal-overlay" id="keyCreatedModal">
   <div class="modal">
     <div class="success-box">
@@ -293,11 +259,8 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 <div class="toast" id="toast">✅ OK</div>
 
 <script type="module">
-/* ═══════════════════════════════════════════════════════════
-   🔥 FIREBASE CONFIG - ĐÃ DÁN SẴN
-   ═══════════════════════════════════════════════════════════ */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getDatabase, ref, set, get, update, onValue }
+import { getDatabase, ref, set, get, update }
   from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -307,8 +270,7 @@ const firebaseConfig = {
   projectId: "mrphuc-51580",
   storageBucket: "mrphuc-51580.firebasestorage.app",
   messagingSenderId: "922607657180",
-  appId: "1:922607657180:web:5d6b389087ffa3f614d419",
-  measurementId: "G-Y09GG5W486"
+  appId: "1:922607657180:web:5d6b389087ffa3f614d419"
 };
 
 let db = null;
@@ -320,16 +282,10 @@ try {
   console.error('❌ Firebase error:', e);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   CẤU HÌNH
-   ═══════════════════════════════════════════════════════════ */
 const ADMIN_USER = 'admin';
 const ADMIN_PASS = 'phc51580';
 const ZALO_URL = 'https://zalo.me/0865561731';
 
-/* ═══════════════════════════════════════════════════════════
-   HELPERS
-   ═══════════════════════════════════════════════════════════ */
 function genKey(){
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   const block = () => {
@@ -339,16 +295,13 @@ function genKey(){
   };
   return `PHUC-${block()}-${block()}`;
 }
-
 function showMsg(el,t,type){el.textContent=t;el.className='message '+(type||'')}
-
 function showLoading(on, text){
   const overlay = document.getElementById('loadingOverlay');
   const txt = document.getElementById('loadingText');
   if (text) txt.textContent = text;
   overlay.classList.toggle('active', on);
 }
-
 async function copyToClipboard(text){
   try{ await navigator.clipboard.writeText(text); return true; }
   catch(e){
@@ -359,7 +312,6 @@ async function copyToClipboard(text){
     document.body.removeChild(ta); return ok;
   }
 }
-
 const toastEl = document.getElementById('toast');
 let toastTimer = null;
 function showToast(text){
@@ -368,49 +320,20 @@ function showToast(text){
   clearTimeout(toastTimer);
   toastTimer = setTimeout(()=>toastEl.classList.remove('show'), 1800);
 }
-
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   FIREBASE - ĐỌC/GHI KEY
-   ═══════════════════════════════════════════════════════════ */
-async function loadKeysFromServer(){
-  if (!db) throw new Error('Firebase chưa kết nối');
-  const snap = await get(ref(db, 'keys'));
-  return snap.exists() ? snap.val() : {};
-}
-
-async function saveKeyToServer(code, data){
-  if (!db) throw new Error('Firebase chưa kết nối');
-  await set(ref(db, 'keys/' + code), data);
-}
-
-async function markKeyUsed(code){
-  if (!db) throw new Error('Firebase chưa kết nối');
-  await update(ref(db, 'keys/' + code), { used: true, usedAt: Date.now() });
-}
-
-/* ═══════════════════════════════════════════════════════════
-   STATE
-   ═══════════════════════════════════════════════════════════ */
 let isAdmin = false;
 let timerInterval = null;
 let menuInitialized = false;
 
-/* ═══════════════════════════════════════════════════════════
-   BUY KEY -> ZALO
-   ═══════════════════════════════════════════════════════════ */
 document.getElementById('buyKeyBtn').addEventListener('click', () => {
   window.open(ZALO_URL, '_blank');
 });
 
-/* ═══════════════════════════════════════════════════════════
-   DÁN KEY
-   ═══════════════════════════════════════════════════════════ */
 const keyInput = document.getElementById('keyInput');
 const messageEl = document.getElementById('message');
 
@@ -425,9 +348,6 @@ document.getElementById('pasteBtn').addEventListener('click', async () => {
   }
 });
 
-/* ═══════════════════════════════════════════════════════════
-   KÍCH HOẠT KEY
-   ═══════════════════════════════════════════════════════════ */
 document.getElementById('activateBtn').addEventListener('click', async () => {
   const key = keyInput.value.trim().toUpperCase();
   if (!key) return showMsg(messageEl, '⚠ Vui lòng nhập key!', 'error');
@@ -448,7 +368,7 @@ document.getElementById('activateBtn').addEventListener('click', async () => {
     const now = Date.now();
     if (found.expireAt && now > found.expireAt) return showMsg(messageEl, '❌ Key đã hết hạn!', 'error');
 
-    await markKeyUsed(key);
+    await update(ref(db, 'keys/' + key), { used: true, usedAt: now });
 
     localStorage.setItem('activeKey', key);
     localStorage.setItem('activeKeyExpire', found.expireAt || 0);
@@ -471,9 +391,6 @@ document.getElementById('activateBtn').addEventListener('click', async () => {
 
 keyInput.addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('activateBtn').click(); });
 
-/* ═══════════════════════════════════════════════════════════
-   ADMIN LOGIN
-   ═══════════════════════════════════════════════════════════ */
 const adminModal = document.getElementById('adminModal');
 const adminUser = document.getElementById('adminUser');
 const adminPass = document.getElementById('adminPass');
@@ -510,9 +427,6 @@ document.getElementById('adminLoginBtn').addEventListener('click', ()=>{
 });
 adminPass.addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('adminLoginBtn').click(); });
 
-/* ═══════════════════════════════════════════════════════════
-   MENU SESSION
-   ═══════════════════════════════════════════════════════════ */
 function startMenuSession(){
   const timerDisplay = document.getElementById('timerDisplay');
   const expireAt = parseInt(localStorage.getItem('activeKeyExpire') || '0');
@@ -572,34 +486,28 @@ function startMenuSession(){
   });
 }
 
-/* ═══════════════════════════════════════════════════════════
-   NÚT KÍCH HOẠT HACK
-   ═══════════════════════════════════════════════════════════ */
 const hackActivateBtn = document.getElementById('hackActivateBtn');
 let hackActivated = false;
 
 hackActivateBtn.addEventListener('click', () => {
   if (hackActivated) {
-       hackActivated = false;
+    hackActivated = false;
     hackActivateBtn.classList.remove('activated');
     hackActivateBtn.textContent = '⚡ KÍCH HOẠT HACK';
     document.querySelectorAll('.switch').forEach(sw => {
       sw.classList.remove('active');
       const card = sw.closest('.card');
-      if if (card) card.classList.remove('on');
+      if (card) card.classList.remove('on');
     });
-    showToast('⚫ ĐÃ (! HdbỦY HACK');
+    showToast('⚫ ĐÃ HỦY HACK');
   } else {
-   ) hackActivated = true;
-    hack returnActivateBtn.classList.add('activated');
-    hack alertActivateBtn.textContent = '✅ ĐÃ KÍCH HOẠ('T - BẤM ĐỂ HỦY';
-    showToast('🟢 ĐÃ K❌ÍCH HOẠT HACK!');
+    hackActivated = true;
+    hackActivateBtn.classList.add('activated');
+    hackActivateBtn.textContent = '✅ ĐÃ KÍCH HOẠT - BẤM ĐỂ HỦY';
+    showToast('🟢 ĐÃ KÍCH HOẠT HACK!');
   }
 });
 
-/* ═══════════════════════════════════════════════════════════
-   LOGOUT
-   ═══════════════════════════════════════════════════════════ */
 document.getElementById('menuLogoutBtn').addEventListener('click', ()=>{
   if (confirm('Bạn có chắc muốn thoát?')){
     localStorage.removeItem('activeKey');
@@ -615,12 +523,9 @@ document.getElementById('menuLogoutBtn').addEventListener('click', ()=>{
   }
 });
 
-/* ═══════════════════════════════════════════════════════════
-   ADMIN - TẠO KEY (LƯU LÊN FIREBASE)
-   ═══════════════════════════════════════════════════════════ */
 document.querySelectorAll('.key-btn').forEach(btn=>{
   btn.addEventListener('click', async () => {
- Chưa kết nối Firebase!');
+    if (!db) return alert('❌ Chưa kết nối Firebase!');
 
     btn.disabled = true;
     showLoading(true, '⏳ ĐANG TẠO KEY...');
@@ -631,7 +536,7 @@ document.querySelectorAll('.key-btn').forEach(btn=>{
       const now = Date.now();
       const expireAt = days >= 999999 ? null : now + days * 24 * 60 * 60 * 1000;
 
-      await saveKeyToServer(code, { days, createdAt: now, expireAt, used: false });
+      await set(ref(db, 'keys/' + code), { days, createdAt: now, expireAt, used: false });
 
       showLoading(false);
       btn.disabled = false;
@@ -679,15 +584,13 @@ document.getElementById('keyCreatedClose').addEventListener('click', ()=>{
   document.getElementById('keyCreatedModal').classList.remove('active');
 });
 
-/* ═══════════════════════════════════════════════════════════
-   RENDER KEY LIST (TỪ FIREBASE)
-   ═══════════════════════════════════════════════════════════ */
 async function renderKeys(){
   const keyList = document.getElementById('keyList');
   keyList.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);font-size:12px;">⏳ Đang tải...</div>';
 
   try {
-    const allKeys = await loadKeysFromServer();
+    const snap = await get(ref(db, 'keys'));
+    const allKeys = snap.exists() ? snap.val() : {};
     const codes = Object.keys(allKeys).reverse();
 
     if (!codes.length){
@@ -731,16 +634,10 @@ async function renderKeys(){
   }
 }
 
-/* ═══════════════════════════════════════════════════════════
-   ĐÓNG MODAL KHI CLICK NGOÀI
-   ═══════════════════════════════════════════════════════════ */
 document.querySelectorAll('.modal-overlay').forEach(o=>{
   o.addEventListener('click', e=>{ if (e.target === o) o.classList.remove('active'); });
 });
 
-/* ═══════════════════════════════════════════════════════════
-   KHỞI ĐỘNG
-   ═══════════════════════════════════════════════════════════ */
 (function init(){
   const activeKey = localStorage.getItem('activeKey');
   const expireAt = parseInt(localStorage.getItem('activeKeyExpire') || '0');
