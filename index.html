@@ -6,45 +6,40 @@
 <title>Mr.Phuc - Key System</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Consolas,monospace}
-:root{--bg:#0a0a0a;--panel:#141414;--panel2:#1a1a1a;--border:#2a2a2a;--text:#fff;--muted:#888}
+:root{--bg:#0a0a0a;--panel:#141414;--border:#2a2a2a;--text:#fff;--muted:#888;--zalo:#0068ff}
 body{background:var(--bg);color:var(--text);min-height:100vh}
-
-/* Ẩn/hiện trang */
 .page{display:none}
 .page.active{display:block}
 
-/* ============ TRANG LOGIN ============ */
+/* LOGIN */
 #pageLogin{display:none;justify-content:center;align-items:center;min-height:100vh;padding:20px}
 #pageLogin.active{display:flex}
-
 .login-container{background:var(--panel);border:2px solid var(--border);border-radius:18px;padding:40px 30px;width:100%;max-width:440px;box-shadow:0 0 60px rgba(255,255,255,.06);position:relative}
 .brand-name{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:6px 22px;border-radius:20px;font-weight:bold;font-size:13px;letter-spacing:3px;white-space:nowrap}
 .logo-box{text-align:center;margin-bottom:28px;margin-top:10px}
 .logo{font-size:55px;margin-bottom:8px;filter:drop-shadow(0 0 15px rgba(255,255,255,.3))}
 .title{font-size:24px;letter-spacing:5px;margin-bottom:6px;font-weight:bold}
 .subtitle{color:var(--muted);font-size:12px;letter-spacing:2px}
-
 .input-group{position:relative;margin-bottom:16px}
 .input-group input{width:100%;padding:15px 50px 15px 16px;background:#000;border:2px solid var(--border);border-radius:12px;color:#fff;font-size:14px;outline:none;transition:.25s;letter-spacing:1px}
 .input-group input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.05)}
 .input-group input::placeholder{color:#555;letter-spacing:0}
 .paste-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:#222;border:1px solid var(--border);color:#fff;width:38px;height:38px;border-radius:9px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.2s}
 .paste-btn:hover{background:#fff;color:#000}
-
 .btn-activate{width:100%;padding:15px;background:#fff;color:#000;border:none;border-radius:12px;font-weight:bold;letter-spacing:3px;cursor:pointer;font-size:14px;transition:.25s}
 .btn-activate:hover{background:#ccc}
-
+.btn-buy-key{width:100%;padding:15px;margin-top:10px;background:linear-gradient(135deg,#0068ff,#0084ff);color:#fff;border:none;border-radius:12px;font-weight:bold;letter-spacing:2px;cursor:pointer;font-size:13px;transition:.25s;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 15px rgba(0,104,255,.3)}
+.btn-buy-key:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,104,255,.5)}
 .admin-link{text-align:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;cursor:pointer;letter-spacing:2px;transition:.2s}
 .admin-link:hover{color:#fff}
-
 .message{text-align:center;margin-top:14px;font-size:12px;min-height:16px;letter-spacing:1px}
 .message.error{color:#ff5555}
 .message.success{color:#55ff88}
 
-/* ============ MODAL ============ */
+/* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);justify-content:center;align-items:center;z-index:100;padding:20px;backdrop-filter:blur(4px)}
 .modal-overlay.active{display:flex}
-.modal{background:var(--panel);border:2px solid var(--border);border-radius:16px;padding:30px 24px;width:100%;max-width:420px;animation:slideUp .3s}
+.modal{background:var(--panel);border:2px solid var(--border);border-radius:16px;padding:30px 24px;width:100%;max-width:420px;animation:slideUp .3s;max-height:90vh;overflow-y:auto}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .modal-title{text-align:center;margin-bottom:22px;letter-spacing:4px;font-size:16px;font-weight:bold}
 .modal input{width:100%;padding:13px 16px;margin-bottom:12px;background:#000;border:2px solid var(--border);border-radius:10px;color:#fff;outline:none;font-size:14px;letter-spacing:1px}
@@ -56,56 +51,56 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .btn-modal.primary{background:#fff;color:#000}
 .btn-modal.primary:hover{background:#ccc}
 
-/* ============ HEADER CHUNG (MENU + ADMIN) ============ */
+/* HEADER */
 .header{background:var(--panel);border-bottom:2px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .header-left{display:flex;align-items:center;gap:10px}
 .brand{font-size:18px;letter-spacing:3px;font-weight:bold}
 .tag{background:#fff;color:#000;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:bold;letter-spacing:2px}
 .header-right{display:flex;align-items:center;gap:12px}
-
 .timer-box{background:#000;border:2px solid var(--border);border-radius:10px;padding:8px 14px;display:flex;align-items:center;gap:10px;font-size:13px}
 .timer-label{color:var(--muted);font-size:11px;letter-spacing:1px}
 .timer-value{color:#fff;font-weight:bold;font-family:monospace;font-size:14px;letter-spacing:1px}
 .timer-value.warning{color:#ff5555;animation:pulse 1s infinite}
 @keyframes pulse{50%{opacity:.5}}
-
 .logout-btn{background:#fff;color:#000;border:none;padding:9px 16px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px;letter-spacing:1px;transition:.2s}
 .logout-btn:hover{background:#ccc}
 
-/* ============ TAB MENU ============ */
-.tabs{display:flex;gap:10px;padding:20px;flex-wrap:wrap;max-width:1100px;margin:0 auto;width:100%}
-.tab{flex:1;min-width:140px;background:var(--panel);color:var(--muted);border:2px solid var(--border);padding:14px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:12px;letter-spacing:2px;transition:.25s;display:flex;align-items:center;justify-content:center;gap:6px}
+/* TABS */
+.tabs{display:flex;gap:8px;padding:16px 20px;flex-wrap:wrap;max-width:1100px;margin:0 auto;width:100%}
+.tab{flex:1;min-width:110px;background:var(--panel);color:var(--muted);border:2px solid var(--border);padding:12px 8px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:11px;letter-spacing:1.5px;transition:.25s;display:flex;align-items:center;justify-content:center;gap:5px}
 .tab:hover{color:#fff;border-color:#444}
 .tab.active{background:#fff;color:#000;border-color:#fff}
+.tab.admin-tab{background:#1a0f0f;border-color:#ff3333;color:#ff5555}
+.tab.admin-tab.active{background:#ff3333;color:#fff;border-color:#ff3333}
 
 .content{max-width:1100px;margin:0 auto;padding:0 20px 40px;width:100%}
 .tab-content{display:none}
 .tab-content.active{display:block;animation:fadeIn .3s}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-
 .section-title{font-size:14px;letter-spacing:4px;margin-bottom:18px;border-left:4px solid #fff;padding-left:12px;text-transform:uppercase}
 
+/* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.grid-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:700px){.grid-row{grid-template-columns:1fr}}
 .card{background:var(--panel);border:2px solid var(--border);border-radius:12px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;transition:.25s}
 .card:hover{border-color:#fff}
 .card.on{border-color:#fff;background:#1f1f1f}
 .card-name{font-size:12px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase}
 
-/* SWITCH TRÁI -> PHẢI */
+/* SWITCH */
 .switch{width:54px;height:30px;background:#333;border-radius:15px;position:relative;cursor:pointer;transition:.3s;flex-shrink:0}
 .switch.active{background:#fff}
 .switch-ball{position:absolute;top:3px;left:3px;width:24px;height:24px;background:#fff;border-radius:50%;transition:.3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 6px rgba(0,0,0,.4)}
 .switch.active .switch-ball{left:27px;background:#000}
 
-/* ============ ADMIN ============ */
-.container{width:100%;max-width:900px;margin:0 auto;padding:30px 20px}
+/* ADMIN */
 .key-create-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
 .key-btn{background:var(--panel);color:#fff;border:2px solid var(--border);padding:20px 10px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:13px;letter-spacing:2px;transition:.2s;display:flex;flex-direction:column;align-items:center;gap:6px}
 .key-btn .icon{font-size:22px}
 .key-btn:hover{background:#fff;color:#000;border-color:#fff;transform:translateY(-2px)}
 .key-btn:active{transform:translateY(0)}
-
-.key-list{display:flex;flex-direction:column;gap:10px;max-height:500px;overflow-y:auto;padding-right:4px}
+.key-list{display:flex;flex-direction:column;gap:10px;max-height:400px;overflow-y:auto;padding-right:4px;margin-bottom:20px}
 .key-item{background:var(--panel);border:2px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;cursor:pointer;transition:.2s}
 .key-item:hover{border-color:#fff;background:#1f1f1f}
 .key-code{font-family:monospace;font-weight:bold;letter-spacing:1px;font-size:14px}
@@ -115,36 +110,34 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 .key-status.used{background:#333;color:#888}
 .key-status.expired{background:#ff3333;color:#fff}
 
-/* SUCCESS KEY */
+/* PUBLISH BOX */
+.publish-box{background:#0d1a0d;border:2px solid #2a5a2a;border-radius:12px;padding:16px;margin-top:20px}
+.publish-title{font-size:12px;letter-spacing:2px;color:#55ff88;margin-bottom:10px;font-weight:bold}
+.publish-code{width:100%;background:#000;border:2px solid #2a5a2a;border-radius:8px;padding:12px;color:#55ff88;font-family:monospace;font-size:11px;resize:vertical;min-height:80px;outline:none;letter-spacing:.5px}
+.publish-hint{color:#888;font-size:10px;margin-top:8px;line-height:1.6}
+.btn-publish{width:100%;padding:12px;background:#55ff88;color:#000;border:none;border-radius:8px;font-weight:bold;letter-spacing:1px;cursor:pointer;font-size:12px;margin-top:10px;transition:.2s}
+.btn-publish:hover{background:#44dd77}
+
 .success-box{text-align:center}
 .success-icon{font-size:55px;margin-bottom:10px}
 .success-key{background:#000;border:2px dashed #fff;border-radius:12px;padding:16px;font-family:monospace;font-size:17px;letter-spacing:2px;font-weight:bold;margin:16px 0 10px;word-break:break-all;cursor:pointer;transition:.2s;user-select:none}
 .success-key:hover{background:#111;transform:scale(1.02)}
-.success-key:active{transform:scale(.98)}
 .copy-hint{color:var(--muted);font-size:11px;margin-bottom:18px;letter-spacing:1px}
 
-/* TOAST */
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:#fff;color:#000;padding:12px 24px;border-radius:10px;font-size:13px;font-weight:bold;letter-spacing:1px;opacity:0;transition:.3s;z-index:999;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:#000;border-radius:4px}
-::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:#555}
 
 @media(max-width:600px){
   .brand{font-size:15px}
   .timer-box{padding:6px 10px;font-size:11px}
-  .tab{min-width:90px;font-size:11px;padding:10px}
+  .tab{min-width:80px;font-size:10px;padding:10px 4px}
   .key-create-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     TRANG 1: LOGIN
-     ============================================================ -->
+<!-- LOGIN -->
 <div class="page active" id="pageLogin">
   <div class="login-container">
     <div class="brand-name">MR.PHUC</div>
@@ -153,21 +146,18 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
       <div class="title">KEY SYSTEM</div>
       <div class="subtitle">NHẬP KEY ĐỂ KÍCH HOẠT</div>
     </div>
-
     <div class="input-group">
       <input type="text" id="keyInput" placeholder="PHUC-XXX-XXX" autocomplete="off">
-      <button class="paste-btn" id="pasteBtn" title="Dán từ clipboard">📋</button>
+      <button class="paste-btn" id="pasteBtn" title="Dán">📋</button>
     </div>
-
     <button class="btn-activate" id="activateBtn">KÍCH HOẠT</button>
+    <button class="btn-buy-key" id="buyKeyBtn">💬 BUY KEY - LIÊN HỆ NGAY</button>
     <div class="message" id="message"></div>
     <div class="admin-link" id="openAdminBtn">⚙ ADMIN LOGIN</div>
   </div>
 </div>
 
-<!-- ============================================================
-     TRANG 2: MENU (user nhập key mới vào)
-     ============================================================ -->
+<!-- MENU -->
 <div class="page" id="pageMenu">
   <div class="header">
     <div class="header-left">
@@ -175,7 +165,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
       <span class="tag">MR.PHUC</span>
     </div>
     <div class="header-right">
-      <div class="timer-box">
+      <div class="timer-box" id="timerBox">
         <span class="timer-label">⏱ CÒN LẠI:</span>
         <span class="timer-value" id="timerDisplay">--:--:--</span>
       </div>
@@ -183,11 +173,12 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
     </div>
   </div>
 
-  <div class="tabs">
+  <div class="tabs" id="mainTabs">
     <button class="tab active" data-tab="modSkin">🎨 MOD SKIN</button>
     <button class="tab" data-tab="menuVip">👑 MENU VIP</button>
     <button class="tab" data-tab="aimLock">🎯 AIM LOCK</button>
     <button class="tab" data-tab="dvDich">👁 ĐV + ĐỊCH</button>
+    <button class="tab admin-tab" id="adminTabBtn" style="display:none" data-tab="adminPanelTab">🛡 ADMIN</button>
   </div>
 
   <div class="content">
@@ -223,49 +214,47 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 
     <div class="tab-content" id="dvDich">
       <h3 class="section-title">ĐV + Địch</h3>
-      <div class="grid">
+      <div class="grid-row">
         <div class="card"><span class="card-name">ĐV Nhìn Xuyên Keo</span><div class="switch" data-switch="dv_nhin_xuyen_keo"><div class="switch-ball"></div></div></div>
         <div class="card"><span class="card-name">ĐV Người</span><div class="switch" data-switch="dv_nguoi"><div class="switch-ball"></div></div></div>
         <div class="card"><span class="card-name">ĐV Súng</span><div class="switch" data-switch="dv_sung"><div class="switch-ball"></div></div></div>
       </div>
     </div>
+
+    <!-- ADMIN TAB -->
+    <div class="tab-content" id="adminPanelTab">
+      <h3 class="section-title">🛡 Tạo Key</h3>
+      <div class="key-create-grid">
+        <button class="key-btn" data-days="1"><span class="icon">📅</span>KEY 1D</button>
+        <button class="key-btn" data-days="3"><span class="icon">📅</span>KEY 3D</button>
+        <button class="key-btn" data-days="7"><span class="icon">🔥</span>KEY 7D</button>
+        <button class="key-btn" data-days="30"><span class="icon">💎</span>KEY 30D</button>
+        <button class="key-btn" data-days="60"><span class="icon">👑</span>KEY 60D</button>
+        <button class="key-btn" data-days="999999"><span class="icon">♾️</span>VĨNH VIỄN</button>
+      </div>
+
+      <h3 class="section-title">📋 Danh Sách Key <span style="font-size:10px;color:var(--muted);letter-spacing:1px">(click để copy)</span></h3>
+      <div class="key-list" id="keyList"></div>
+
+      <!-- PUBLISH BOX -->
+      <div class="publish-box">
+        <div class="publish-title">📤 XUẤT KEY ĐỂ CHIA SẺ</div>
+        <textarea class="publish-code" id="publishCode" readonly></textarea>
+        <button class="btn-publish" id="copyPublishBtn">📋 COPY TẤT CẢ KEY</button>
+        <div class="publish-hint">
+          ⚠️ <b>Hướng dẫn publish:</b><br>
+          1. Bấm COPY → dán vào biến <code>PUBLIC_KEYS</code> trong file HTML<br>
+          2. Upload lại lên GitHub<br>
+          3. Mọi người vào web đều nhập được key đó<br>
+          <br>
+          💡 <b>Lưu ý:</b> Key hardcode = ai xem source cũng thấy. Muốn bảo mật cần backend!
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ============================================================
-     TRANG 3: ADMIN (chỉ admin mới vào)
-     ============================================================ -->
-<div class="page" id="pageAdmin">
-  <div class="header">
-    <div class="header-left">
-      <span class="brand">🛡 ADMIN PANEL</span>
-      <span class="tag">MR.PHUC</span>
-    </div>
-    <div class="header-right">
-      <span style="font-size:13px;color:var(--muted);letter-spacing:1px">👤 admin</span>
-      <button class="logout-btn" id="adminLogoutBtn">ĐĂNG XUẤT</button>
-    </div>
-  </div>
-
-  <div class="container">
-    <h2 class="section-title">Tạo Key Mới</h2>
-    <div class="key-create-grid">
-      <button class="key-btn" data-days="1"><span class="icon">📅</span>KEY 1D</button>
-      <button class="key-btn" data-days="3"><span class="icon">📅</span>KEY 3D</button>
-      <button class="key-btn" data-days="7"><span class="icon">🔥</span>KEY 7D</button>
-      <button class="key-btn" data-days="30"><span class="icon">💎</span>KEY 30D</button>
-      <button class="key-btn" data-days="60"><span class="icon">👑</span>KEY 60D</button>
-      <button class="key-btn" data-days="999999"><span class="icon">♾️</span>VĨNH VIỄN</button>
-    </div>
-
-    <h2 class="section-title">Danh Sách Key <span style="font-size:10px;color:var(--muted);letter-spacing:1px">(click để copy)</span></h2>
-    <div class="key-list" id="keyList"></div>
-  </div>
-</div>
-
-<!-- ============================================================
-     MODAL ADMIN LOGIN
-     ============================================================ -->
+<!-- MODAL ADMIN LOGIN -->
 <div class="modal-overlay" id="adminModal">
   <div class="modal">
     <div class="modal-title">⚙ ADMIN LOGIN</div>
@@ -278,9 +267,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
   </div>
 </div>
 
-<!-- ============================================================
-     MODAL KEY VỪA TẠO
-     ============================================================ -->
+<!-- MODAL KEY CREATED -->
 <div class="modal-overlay" id="keyCreatedModal">
   <div class="modal">
     <div class="success-box">
@@ -297,10 +284,24 @@ body{background:var(--bg);color:var(--text);min-height:100vh}
 
 <script>
 /* ============================================================
+   🔥 DÁNH SÁCH KEY PUBLIC - DÁN KEY ĐÃ TẠO VÀO ĐÂY
+   ============================================================ */
+const PUBLIC_KEYS = {
+  // Dán key vào đây theo format:
+  // "PHUC-ABC-123": { days: 1, expireAt: null, used: false },
+  // "PHUC-XYZ-789": { days: 999999, expireAt: null, used: false },
+
+  // Ví dụ mẫu (xoá hoặc để nguyên cũng được):
+  "PHUC-DEM-O01": { days: 1, expireAt: null, used: false },
+  "PHUC-DEM-O02": { days: 999999, expireAt: null, used: false }
+};
+
+/* ============================================================
    CẤU HÌNH
    ============================================================ */
 const ADMIN_USER = 'admin';
 const ADMIN_PASS = 'phc51580';
+const ZALO_URL = 'https://zalo.me/0865561731';
 
 /* ============================================================
    HELPERS
@@ -314,25 +315,16 @@ function genKey(){
   };
   return `PHUC-${block()}-${block()}`;
 }
-function getKeys(){return JSON.parse(localStorage.getItem('keys')||'[]')}
-function saveKeys(a){localStorage.setItem('keys',JSON.stringify(a))}
 function showMsg(el,t,type){el.textContent=t;el.className='message '+(type||'')}
 
 async function copyToClipboard(text){
-  try{
-    await navigator.clipboard.writeText(text);
-    return true;
-  } catch(e){
+  try{ await navigator.clipboard.writeText(text); return true; }
+  catch(e){
     const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    let ok = false;
-    try{ ok = document.execCommand('copy'); }catch(_){}
-    document.body.removeChild(ta);
-    return ok;
+    ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    let ok=false; try{ok=document.execCommand('copy')}catch(_){}
+    document.body.removeChild(ta); return ok;
   }
 }
 
@@ -346,6 +338,21 @@ function showToast(text){
 }
 
 /* ============================================================
+   QUẢN LÝ KEY
+   ============================================================ */
+// Lấy tất cả key = Public keys + keys lưu local (admin vừa tạo)
+function getAllKeys(){
+  const localKeys = JSON.parse(localStorage.getItem('localKeys') || '{}');
+  return { ...PUBLIC_KEYS, ...localKeys };
+}
+function getLocalKeys(){
+  return JSON.parse(localStorage.getItem('localKeys') || '{}');
+}
+function saveLocalKeys(obj){
+  localStorage.setItem('localKeys', JSON.stringify(obj));
+}
+
+/* ============================================================
    CHUYỂN TRANG
    ============================================================ */
 function showPage(id){
@@ -354,13 +361,23 @@ function showPage(id){
   window.scrollTo(0,0);
 }
 
+let isAdmin = false;
+let timerInterval = null;
+let menuInitialized = false;
+
 /* ============================================================
-   TRANG LOGIN - XỬ LÝ
+   BUY KEY -> ZALO
+   ============================================================ */
+document.getElementById('buyKeyBtn').addEventListener('click', () => {
+  window.open(ZALO_URL, '_blank');
+});
+
+/* ============================================================
+   DÁN KEY
    ============================================================ */
 const keyInput = document.getElementById('keyInput');
 const messageEl = document.getElementById('message');
 
-// Nút DÁN KEY
 document.getElementById('pasteBtn').addEventListener('click', async () => {
   try {
     const text = await navigator.clipboard.readText();
@@ -368,17 +385,19 @@ document.getElementById('pasteBtn').addEventListener('click', async () => {
     showMsg(messageEl, '📋 Đã dán key!', 'success');
     setTimeout(()=>showMsg(messageEl,'',''),1500);
   } catch(e) {
-    showMsg(messageEl, '❌ Không thể dán - cấp quyền clipboard!', 'error');
+    showMsg(messageEl, '❌ Không thể dán!', 'error');
   }
 });
 
-// Nút KÍCH HOẠT
+/* ============================================================
+   KÍCH HOẠT KEY
+   ============================================================ */
 document.getElementById('activateBtn').addEventListener('click', () => {
   const key = keyInput.value.trim().toUpperCase();
   if (!key) return showMsg(messageEl, '⚠ Vui lòng nhập key!', 'error');
 
-  const keys = getKeys();
-  const found = keys.find(k => k.code === key);
+  const allKeys = getAllKeys();
+  const found = allKeys[key];
 
   if (!found) return showMsg(messageEl, '❌ Key không tồn tại!', 'error');
   if (found.used) return showMsg(messageEl, '❌ Key đã được sử dụng!', 'error');
@@ -386,9 +405,17 @@ document.getElementById('activateBtn').addEventListener('click', () => {
   const now = Date.now();
   if (found.expireAt && now > found.expireAt) return showMsg(messageEl, '❌ Key đã hết hạn!', 'error');
 
-  found.used = true;
-  found.usedAt = now;
-  saveKeys(keys);
+  // Đánh dấu đã dùng (chỉ trong local máy này)
+  const localKeys = getLocalKeys();
+  const publicKeys = { ...PUBLIC_KEYS };
+  // Ghi đè
+  if (PUBLIC_KEYS[key]) {
+    // Không sửa được PUBLIC_KEYS -> lưu vào localKeys với used=true
+    localKeys[key] = { ...PUBLIC_KEYS[key], used: true, usedAt: now };
+  } else {
+    localKeys[key] = { ...found, used: true, usedAt: now };
+  }
+  saveLocalKeys(localKeys);
 
   localStorage.setItem('activeKey', key);
   localStorage.setItem('activeKeyExpire', found.expireAt || 0);
@@ -405,7 +432,7 @@ document.getElementById('activateBtn').addEventListener('click', () => {
 keyInput.addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('activateBtn').click(); });
 
 /* ============================================================
-   MODAL ADMIN LOGIN
+   ADMIN LOGIN
    ============================================================ */
 const adminModal = document.getElementById('adminModal');
 const adminUser = document.getElementById('adminUser');
@@ -423,8 +450,18 @@ document.getElementById('adminLoginBtn').addEventListener('click', ()=>{
   const p = adminPass.value;
   if (u === ADMIN_USER && p === ADMIN_PASS) {
     adminModal.classList.remove('active');
-    showPage('pageAdmin');
-    renderKeys();
+    isAdmin = true;
+    localStorage.setItem('activeKey', 'ADMIN_MODE');
+    localStorage.setItem('activeKeyExpire', 0);
+    sessionStorage.setItem('isAdmin', 'yes');
+
+    showPage('pageMenu');
+    startMenuSession();
+
+    document.getElementById('adminTabBtn').style.display = 'flex';
+    document.getElementById('timerBox').style.display = 'none';
+
+    setTimeout(()=>document.getElementById('adminTabBtn').click(), 100);
   } else {
     alert('❌ Sai tên đăng nhập hoặc mật khẩu!');
     adminPass.value = '';
@@ -433,17 +470,14 @@ document.getElementById('adminLoginBtn').addEventListener('click', ()=>{
 adminPass.addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('adminLoginBtn').click(); });
 
 /* ============================================================
-   MENU SESSION - ĐỒNG HỒ + TAB + SWITCH
+   MENU SESSION
    ============================================================ */
-let timerInterval = null;
-let menuInitialized = false;
-
 function startMenuSession(){
-  // Đồng hồ đếm ngược
   const timerDisplay = document.getElementById('timerDisplay');
   const expireAt = parseInt(localStorage.getItem('activeKeyExpire') || '0');
 
   function updateTimer(){
+    if (isAdmin) return;
     if (!expireAt || expireAt === 0){
       timerDisplay.textContent = 'VĨNH VIỄN ∞';
       timerDisplay.classList.remove('warning');
@@ -472,7 +506,6 @@ function startMenuSession(){
   updateTimer();
   timerInterval = setInterval(updateTimer, 1000);
 
-  // Chỉ gán sự kiện 1 lần
   if (menuInitialized) return;
   menuInitialized = true;
 
@@ -483,6 +516,7 @@ function startMenuSession(){
       document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById(btn.dataset.tab).classList.add('active');
+      if (btn.dataset.tab === 'adminPanelTab') renderKeys();
     });
   });
 
@@ -500,12 +534,16 @@ function startMenuSession(){
   });
 }
 
-// Nút THOÁT ở menu
+/* ============================================================
+   MENU LOGOUT
+   ============================================================ */
 document.getElementById('menuLogoutBtn').addEventListener('click', ()=>{
   if (confirm('Bạn có chắc muốn thoát?')){
     localStorage.removeItem('activeKey');
     localStorage.removeItem('activeKeyExpire');
     clearInterval(timerInterval);
+    isAdmin = false;
+    sessionStorage.removeItem('isAdmin');
     showPage('pageLogin');
   }
 });
@@ -520,9 +558,9 @@ document.querySelectorAll('.key-btn').forEach(btn=>{
     const now = Date.now();
     const expireAt = days >= 999999 ? null : now + days * 24 * 60 * 60 * 1000;
 
-    const keys = getKeys();
-    keys.push({ code, days, createdAt: now, expireAt, used: false });
-    saveKeys(keys);
+    const localKeys = getLocalKeys();
+    localKeys[code] = { days, createdAt: now, expireAt, used: false };
+    saveLocalKeys(localKeys);
 
     const copied = await copyToClipboard(code);
 
@@ -562,55 +600,82 @@ document.getElementById('keyCreatedClose').addEventListener('click', ()=>{
 });
 
 /* ============================================================
-   RENDER DANH SÁCH KEY
+   RENDER KEY LIST
    ============================================================ */
 function renderKeys(){
   const keyList = document.getElementById('keyList');
-  const keys = getKeys().slice().reverse();
+  const localKeys = getLocalKeys();
+  const codes = Object.keys(localKeys).reverse();
 
-  if (!keys.length){
-    keyList.innerHTML = '<div class="key-info" style="text-align:center;padding:20px;">Chưa có key nào</div>';
-    return;
+  if (!codes.length){
+    keyList.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);font-size:12px;">Chưa có key nào - bấm nút phía trên để tạo</div>';
+  } else {
+    keyList.innerHTML = codes.map(code=>{
+      const k = localKeys[code];
+      const now = Date.now();
+      let status = 'valid', label = 'HỢP LỆ';
+      if (k.used) { status = 'used'; label = 'ĐÃ DÙNG'; }
+      else if (k.expireAt && now > k.expireAt) { status = 'expired'; label = 'HẾT HẠN'; }
+
+      const type = k.days >= 999999 ? 'VĨNH VIỄN' : k.days + 'D';
+      const expire = k.expireAt
+        ? new Date(k.expireAt).toLocaleString('vi-VN')
+        : 'Vĩnh viễn';
+
+      return `
+        <div class="key-item" data-code="${code}">
+          <div>
+            <div class="key-code">${code}</div>
+            <div class="key-info">${type} • Hết hạn: ${expire}</div>
+          </div>
+          <span class="key-status ${status}">${label}</span>
+        </div>
+      `;
+    }).join('');
+
+    keyList.querySelectorAll('.key-item').forEach(item=>{
+      item.addEventListener('click', async ()=>{
+        const code = item.dataset.code;
+        const ok = await copyToClipboard(code);
+        if (ok) showToast('✅ ĐÃ COPY: ' + code);
+      });
+    });
   }
 
-  keyList.innerHTML = keys.map(k=>{
-    const now = Date.now();
-    let status = 'valid', label = 'HỢP LỆ';
-    if (k.used) { status = 'used'; label = 'ĐÃ DÙNG'; }
-    else if (k.expireAt && now > k.expireAt) { status = 'expired'; label = 'HẾT HẠN'; }
-
-    const type = k.days >= 999999 ? 'VĨNH VIỄN' : k.days + 'D';
-    const expire = k.expireAt
-      ? new Date(k.expireAt).toLocaleString('vi-VN')
-      : 'Vĩnh viễn';
-
-    return `
-      <div class="key-item" data-code="${k.code}">
-        <div>
-          <div class="key-code">${k.code}</div>
-          <div class="key-info">${type} • Hết hạn: ${expire}</div>
-        </div>
-        <span class="key-status ${status}">${label}</span>
-      </div>
-    `;
-  }).join('');
-
-  keyList.querySelectorAll('.key-item').forEach(item=>{
-    item.addEventListener('click', async ()=>{
-      const code = item.dataset.code;
-      const ok = await copyToClipboard(code);
-      if (ok) showToast('✅ ĐÃ COPY: ' + code);
-    });
-  });
+  // Cập nhật publish box
+  updatePublishBox();
 }
 
 /* ============================================================
-   ADMIN LOGOUT
+   PUBLISH BOX - XUẤT KEY ĐỂ DÁN VÀO FILE
    ============================================================ */
-document.getElementById('adminLogoutBtn').addEventListener('click', ()=>{
-  if (confirm('Đăng xuất khỏi admin?')){
-    showPage('pageLogin');
+function updatePublishBox(){
+  const localKeys = getLocalKeys();
+  const codes = Object.keys(localKeys);
+
+  if (!codes.length){
+    document.getElementById('publishCode').value = '// Chưa có key nào. Hãy tạo key trước!';
+    return;
   }
+
+  const lines = codes.map(code => {
+    const k = localKeys[code];
+    const expireAt = k.expireAt || null;
+    return `  "${code}": { days: ${k.days}, expireAt: ${expireAt}, used: false },`;
+  }).join('\n');
+
+  const text = `const PUBLIC_KEYS = {\n${lines}\n};`;
+  document.getElementById('publishCode').value = text;
+}
+
+document.getElementById('copyPublishBtn').addEventListener('click', async ()=>{
+  const text = document.getElementById('publishCode').value;
+  if (text.startsWith('//')) {
+    showToast('⚠ Chưa có key để publish!');
+    return;
+  }
+  const ok = await copyToClipboard(text);
+  if (ok) showToast('✅ ĐÃ COPY - DÁN VÀO FILE HTML!');
 });
 
 /* ============================================================
@@ -621,21 +686,25 @@ document.querySelectorAll('.modal-overlay').forEach(o=>{
 });
 
 /* ============================================================
-   KHỞI ĐỘNG - NẾU ĐÃ CÓ KEY THÌ VÀO MENU LUÔN
+   KHỞI ĐỘNG
    ============================================================ */
 (function init(){
   const activeKey = localStorage.getItem('activeKey');
   const expireAt = parseInt(localStorage.getItem('activeKeyExpire') || '0');
 
   if (activeKey){
-    // Kiểm tra hết hạn
-    if (expireAt && Date.now() > expireAt){
+    if (activeKey === 'ADMIN_MODE' || !expireAt || Date.now() < expireAt){
+      showPage('pageMenu');
+      if (activeKey === 'ADMIN_MODE') {
+        isAdmin = true;
+        document.getElementById('adminTabBtn').style.display = 'flex';
+        document.getElementById('timerBox').style.display = 'none';
+      }
+      startMenuSession();
+    } else {
       localStorage.removeItem('activeKey');
       localStorage.removeItem('activeKeyExpire');
       showPage('pageLogin');
-    } else {
-      showPage('pageMenu');
-      startMenuSession();
     }
   } else {
     showPage('pageLogin');
