@@ -26,6 +26,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .paste-btn:hover{background:#fff;color:#000}
 .btn-activate{width:100%;padding:15px;background:#fff;color:#000;border:none;border-radius:12px;font-weight:bold;letter-spacing:3px;cursor:pointer;font-size:14px}
 .btn-activate:hover{background:#ccc}
+.btn-activate:disabled{background:#444;color:#888;cursor:wait}
 .btn-buy-key{width:100%;padding:15px;margin-top:10px;background:linear-gradient(135deg,#0068ff,#0084ff);color:#fff;border:none;border-radius:12px;font-weight:bold;letter-spacing:2px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 15px rgba(0,104,255,.3)}
 .btn-buy-key:hover{transform:translateY(-2px)}
 .admin-link{text-align:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;cursor:pointer;letter-spacing:2px}
@@ -91,6 +92,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .key-btn{background:var(--panel);color:#fff;border:2px solid var(--border);padding:20px 10px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:13px;letter-spacing:2px;display:flex;flex-direction:column;align-items:center;gap:6px}
 .key-btn .icon{font-size:22px}
 .key-btn:hover{background:#fff;color:#000;border-color:#fff;transform:translateY(-2px)}
+.key-btn:disabled{opacity:.5;cursor:wait}
 .key-list{display:flex;flex-direction:column;gap:10px;max-height:500px;overflow-y:auto;padding-right:4px}
 .key-item{background:var(--panel);border:2px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;cursor:pointer}
 .key-item:hover{border-color:#fff;background:#1f1f1f}
@@ -131,8 +133,14 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .btn-hack-activate.activated{background:#55ff88;color:#000;box-shadow:0 8px 30px rgba(85,255,136,.4)}
 .btn-hack-activate.activated::before{display:none}
 
-.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(100px);background:#fff;color:#000;padding:12px 24px;border-radius:10px;font-size:13px;font-weight:bold;letter-spacing:1px;opacity:0;transition:.3s;z-index:999;pointer-events:none;white-space:nowrap}
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(100px);background:#fff;color:#000;padding:12px 24px;border-radius:10px;font-size:13px;font-weight:bold;letter-spacing:1px;opacity:0;transition:.3s;z-index:999;pointer-events:none;white-space:nowrap;max-width:90%;overflow:hidden;text-overflow:ellipsis}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.loading-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;justify-content:center;align-items:center;z-index:9999;flex-direction:column;gap:16px;backdrop-filter:blur(4px)}
+.loading-overlay.active{display:flex}
+.spinner{width:48px;height:48px;border:4px solid #333;border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{color:#fff;font-size:12px;letter-spacing:3px;text-align:center;padding:0 20px}
 
 ::-webkit-scrollbar{width:8px}
 ::-webkit-scrollbar-track{background:#000}
@@ -150,6 +158,12 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 </head>
 <body>
 
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <div class="loading-text" id="loadingText">ĐANG XỬ LÝ...</div>
+</div>
+
+<!-- LOGIN -->
 <div class="page active" id="pageLogin">
   <div class="login-container">
     <div class="brand-name">MR.PHUC</div>
@@ -169,6 +183,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 </div>
 
+<!-- MENU -->
 <div class="page" id="pageMenu">
   <div class="header">
     <div class="header-left">
@@ -201,7 +216,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
         <div class="card"><span class="card-name">Mod Fun Súng</span><div class="switch" data-switch="mod_fun_sung"><div class="switch-ball"></div></div></div>
       </div>
     </div>
-
     <div class="tab-content" id="menuVip">
       <h3 class="section-title">Menu Vip</h3>
       <div class="grid">
@@ -211,7 +225,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
         <div class="card"><span class="card-name">Menu Pro Fix Văng</span><div class="switch" data-switch="menu_pro_fix_vang"><div class="switch-ball"></div></div></div>
       </div>
     </div>
-
     <div class="tab-content" id="aimLock">
       <h3 class="section-title">Aim Lock</h3>
       <div class="grid">
@@ -222,7 +235,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
         <div class="card"><span class="card-name">Aim Đổi Ngồi</span><div class="switch" data-switch="aim_doi_ngoi"><div class="switch-ball"></div></div></div>
       </div>
     </div>
-
     <div class="tab-content" id="dvDich">
       <h3 class="section-title">ĐV + Địch</h3>
       <div class="grid-row">
@@ -252,6 +264,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 </div>
 
+<!-- MODAL ADMIN LOGIN -->
 <div class="modal-overlay" id="adminModal">
   <div class="modal">
     <div class="modal-title">⚙ ADMIN LOGIN</div>
@@ -264,6 +277,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 </div>
 
+<!-- MODAL KEY CREATED -->
 <div class="modal-overlay" id="keyCreatedModal">
   <div class="modal">
     <div class="success-box">
@@ -278,11 +292,44 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 
 <div class="toast" id="toast">✅ OK</div>
 
-<script>
+<script type="module">
+/* ═══════════════════════════════════════════════════════════
+   🔥 FIREBASE CONFIG - ĐÃ DÁN SẴN
+   ═══════════════════════════════════════════════════════════ */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+import { getDatabase, ref, set, get, update, onValue }
+  from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAOKxix32T2rC9_TrF9mk6socuR0YCcVno",
+  authDomain: "mrphuc-51580.firebaseapp.com",
+  databaseURL: "https://mrphuc-51580-default-rtdb.firebaseio.com",
+  projectId: "mrphuc-51580",
+  storageBucket: "mrphuc-51580.firebasestorage.app",
+  messagingSenderId: "922607657180",
+  appId: "1:922607657180:web:5d6b389087ffa3f614d419",
+  measurementId: "G-Y09GG5W486"
+};
+
+let db = null;
+try {
+  const app = initializeApp(firebaseConfig);
+  db = getDatabase(app);
+  console.log('✅ Firebase connected');
+} catch(e) {
+  console.error('❌ Firebase error:', e);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CẤU HÌNH
+   ═══════════════════════════════════════════════════════════ */
 const ADMIN_USER = 'admin';
 const ADMIN_PASS = 'phc51580';
 const ZALO_URL = 'https://zalo.me/0865561731';
 
+/* ═══════════════════════════════════════════════════════════
+   HELPERS
+   ═══════════════════════════════════════════════════════════ */
 function genKey(){
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   const block = () => {
@@ -293,16 +340,14 @@ function genKey(){
   return `PHUC-${block()}-${block()}`;
 }
 
-function getAllKeys(){
-  try {
-    return JSON.parse(localStorage.getItem('allKeys') || '{}');
-  } catch(e) { return {}; }
-}
-function saveAllKeys(keys){
-  localStorage.setItem('allKeys', JSON.stringify(keys));
-}
-
 function showMsg(el,t,type){el.textContent=t;el.className='message '+(type||'')}
+
+function showLoading(on, text){
+  const overlay = document.getElementById('loadingOverlay');
+  const txt = document.getElementById('loadingText');
+  if (text) txt.textContent = text;
+  overlay.classList.toggle('active', on);
+}
 
 async function copyToClipboard(text){
   try{ await navigator.clipboard.writeText(text); return true; }
@@ -330,14 +375,42 @@ function showPage(id){
   window.scrollTo(0,0);
 }
 
+/* ═══════════════════════════════════════════════════════════
+   FIREBASE - ĐỌC/GHI KEY
+   ═══════════════════════════════════════════════════════════ */
+async function loadKeysFromServer(){
+  if (!db) throw new Error('Firebase chưa kết nối');
+  const snap = await get(ref(db, 'keys'));
+  return snap.exists() ? snap.val() : {};
+}
+
+async function saveKeyToServer(code, data){
+  if (!db) throw new Error('Firebase chưa kết nối');
+  await set(ref(db, 'keys/' + code), data);
+}
+
+async function markKeyUsed(code){
+  if (!db) throw new Error('Firebase chưa kết nối');
+  await update(ref(db, 'keys/' + code), { used: true, usedAt: Date.now() });
+}
+
+/* ═══════════════════════════════════════════════════════════
+   STATE
+   ═══════════════════════════════════════════════════════════ */
 let isAdmin = false;
 let timerInterval = null;
 let menuInitialized = false;
 
+/* ═══════════════════════════════════════════════════════════
+   BUY KEY -> ZALO
+   ═══════════════════════════════════════════════════════════ */
 document.getElementById('buyKeyBtn').addEventListener('click', () => {
   window.open(ZALO_URL, '_blank');
 });
 
+/* ═══════════════════════════════════════════════════════════
+   DÁN KEY
+   ═══════════════════════════════════════════════════════════ */
 const keyInput = document.getElementById('keyInput');
 const messageEl = document.getElementById('message');
 
@@ -352,37 +425,55 @@ document.getElementById('pasteBtn').addEventListener('click', async () => {
   }
 });
 
-document.getElementById('activateBtn').addEventListener('click', () => {
+/* ═══════════════════════════════════════════════════════════
+   KÍCH HOẠT KEY
+   ═══════════════════════════════════════════════════════════ */
+document.getElementById('activateBtn').addEventListener('click', async () => {
   const key = keyInput.value.trim().toUpperCase();
   if (!key) return showMsg(messageEl, '⚠ Vui lòng nhập key!', 'error');
+  if (!db) return showMsg(messageEl, '❌ Chưa kết nối server!', 'error');
 
-  const allKeys = getAllKeys();
-  const found = allKeys[key];
+  showLoading(true, '⏳ ĐANG KIỂM TRA KEY...');
+  showMsg(messageEl, '', '');
 
-  if (!found) return showMsg(messageEl, '❌ Key không tồn tại!', 'error');
-  if (found.used) return showMsg(messageEl, '❌ Key đã được sử dụng!', 'error');
+  try {
+    const snap = await get(ref(db, 'keys/' + key));
+    showLoading(false);
 
-  const now = Date.now();
-  if (found.expireAt && now > found.expireAt) return showMsg(messageEl, '❌ Key đã hết hạn!', 'error');
+    if (!snap.exists()) return showMsg(messageEl, '❌ Key không tồn tại!', 'error');
 
-  allKeys[key].used = true;
-  allKeys[key].usedAt = now;
-  saveAllKeys(allKeys);
+    const found = snap.val();
+    if (found.used) return showMsg(messageEl, '❌ Key đã được sử dụng!', 'error');
 
-  localStorage.setItem('activeKey', key);
-  localStorage.setItem('activeKeyExpire', found.expireAt || 0);
+    const now = Date.now();
+    if (found.expireAt && now > found.expireAt) return showMsg(messageEl, '❌ Key đã hết hạn!', 'error');
 
-  const typeLabel = found.days >= 999999 ? 'VĨNH VIỄN' : found.days + ' NGÀY';
-  showMsg(messageEl, `✅ Kích hoạt thành công! Gói: ${typeLabel}`, 'success');
+    await markKeyUsed(key);
 
-  setTimeout(()=>{
-    showPage('pageMenu');
-    startMenuSession();
-  }, 800);
+    localStorage.setItem('activeKey', key);
+    localStorage.setItem('activeKeyExpire', found.expireAt || 0);
+    sessionStorage.removeItem('isAdmin');
+
+    const typeLabel = found.days >= 999999 ? 'VĨNH VIỄN' : found.days + ' NGÀY';
+    showMsg(messageEl, `✅ Kích hoạt thành công! Gói: ${typeLabel}`, 'success');
+
+    setTimeout(()=>{
+      showPage('pageMenu');
+      startMenuSession();
+    }, 800);
+
+  } catch(e) {
+    showLoading(false);
+    console.error(e);
+    showMsg(messageEl, '❌ Lỗi kết nối server!', 'error');
+  }
 });
 
 keyInput.addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('activateBtn').click(); });
 
+/* ═══════════════════════════════════════════════════════════
+   ADMIN LOGIN
+   ═══════════════════════════════════════════════════════════ */
 const adminModal = document.getElementById('adminModal');
 const adminUser = document.getElementById('adminUser');
 const adminPass = document.getElementById('adminPass');
@@ -419,6 +510,9 @@ document.getElementById('adminLoginBtn').addEventListener('click', ()=>{
 });
 adminPass.addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('adminLoginBtn').click(); });
 
+/* ═══════════════════════════════════════════════════════════
+   MENU SESSION
+   ═══════════════════════════════════════════════════════════ */
 function startMenuSession(){
   const timerDisplay = document.getElementById('timerDisplay');
   const expireAt = parseInt(localStorage.getItem('activeKeyExpire') || '0');
@@ -427,6 +521,7 @@ function startMenuSession(){
     if (isAdmin) return;
     if (!expireAt || expireAt === 0){
       timerDisplay.textContent = 'VĨNH VIỄN ∞';
+      timerDisplay.classList.remove('warning');
       return;
     }
     const left = expireAt - Date.now();
@@ -477,28 +572,34 @@ function startMenuSession(){
   });
 }
 
+/* ═══════════════════════════════════════════════════════════
+   NÚT KÍCH HOẠT HACK
+   ═══════════════════════════════════════════════════════════ */
 const hackActivateBtn = document.getElementById('hackActivateBtn');
 let hackActivated = false;
 
 hackActivateBtn.addEventListener('click', () => {
   if (hackActivated) {
-    hackActivated = false;
+       hackActivated = false;
     hackActivateBtn.classList.remove('activated');
     hackActivateBtn.textContent = '⚡ KÍCH HOẠT HACK';
     document.querySelectorAll('.switch').forEach(sw => {
       sw.classList.remove('active');
       const card = sw.closest('.card');
-      if (card) card.classList.remove('on');
+      if if (card) card.classList.remove('on');
     });
-    showToast('⚫ ĐÃ HỦY HACK');
+    showToast('⚫ ĐÃ (! HdbỦY HACK');
   } else {
-    hackActivated = true;
-    hackActivateBtn.classList.add('activated');
-    hackActivateBtn.textContent = '✅ ĐÃ KÍCH HOẠT - BẤM ĐỂ HỦY';
-    showToast('🟢 ĐÃ KÍCH HOẠT HACK!');
+   ) hackActivated = true;
+    hack returnActivateBtn.classList.add('activated');
+    hack alertActivateBtn.textContent = '✅ ĐÃ KÍCH HOẠ('T - BẤM ĐỂ HỦY';
+    showToast('🟢 ĐÃ K❌ÍCH HOẠT HACK!');
   }
 });
 
+/* ═══════════════════════════════════════════════════════════
+   LOGOUT
+   ═══════════════════════════════════════════════════════════ */
 document.getElementById('menuLogoutBtn').addEventListener('click', ()=>{
   if (confirm('Bạn có chắc muốn thoát?')){
     localStorage.removeItem('activeKey');
@@ -514,33 +615,49 @@ document.getElementById('menuLogoutBtn').addEventListener('click', ()=>{
   }
 });
 
+/* ═══════════════════════════════════════════════════════════
+   ADMIN - TẠO KEY (LƯU LÊN FIREBASE)
+   ═══════════════════════════════════════════════════════════ */
 document.querySelectorAll('.key-btn').forEach(btn=>{
   btn.addEventListener('click', async () => {
-    const days = parseInt(btn.dataset.days);
-    const code = genKey();
-    const now = Date.now();
-    const expireAt = days >= 999999 ? null : now + days * 24 * 60 * 60 * 1000;
+ Chưa kết nối Firebase!');
 
-    const allKeys = getAllKeys();
-    allKeys[code] = { days, createdAt: now, expireAt, used: false };
-    saveAllKeys(allKeys);
+    btn.disabled = true;
+    showLoading(true, '⏳ ĐANG TẠO KEY...');
 
-    const copied = await copyToClipboard(code);
+    try {
+      const days = parseInt(btn.dataset.days);
+      const code = genKey();
+      const now = Date.now();
+      const expireAt = days >= 999999 ? null : now + days * 24 * 60 * 60 * 1000;
 
-    document.getElementById('createdKeyText').textContent = code;
-    document.getElementById('keyCreatedModal').classList.add('active');
+      await saveKeyToServer(code, { days, createdAt: now, expireAt, used: false });
 
-    const hint = document.getElementById('copyHint');
-    if (copied){
-      hint.textContent = '✅ Đã tự động copy vào clipboard!';
-      hint.style.color = '#55ff88';
-      showToast('✅ ĐÃ COPY KEY!');
-    } else {
-      hint.textContent = '👆 Nhấn vào key để copy';
-      hint.style.color = '#888';
+      showLoading(false);
+      btn.disabled = false;
+
+      const copied = await copyToClipboard(code);
+
+      document.getElementById('createdKeyText').textContent = code;
+      document.getElementById('keyCreatedModal').classList.add('active');
+
+      const hint = document.getElementById('copyHint');
+      if (copied){
+        hint.textContent = '✅ Đã tự động copy vào clipboard!';
+        hint.style.color = '#55ff88';
+        showToast('✅ ĐÃ COPY KEY!');
+      } else {
+        hint.textContent = '👆 Nhấn vào key để copy';
+        hint.style.color = '#888';
+      }
+
+      renderKeys();
+    } catch(e) {
+      showLoading(false);
+      btn.disabled = false;
+      console.error(e);
+      alert('❌ Lỗi tạo key: ' + e.message);
     }
-
-    renderKeys();
   });
 });
 
@@ -562,60 +679,77 @@ document.getElementById('keyCreatedClose').addEventListener('click', ()=>{
   document.getElementById('keyCreatedModal').classList.remove('active');
 });
 
-function renderKeys(){
+/* ═══════════════════════════════════════════════════════════
+   RENDER KEY LIST (TỪ FIREBASE)
+   ═══════════════════════════════════════════════════════════ */
+async function renderKeys(){
   const keyList = document.getElementById('keyList');
-  const allKeys = getAllKeys();
-  const codes = Object.keys(allKeys).reverse();
+  keyList.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);font-size:12px;">⏳ Đang tải...</div>';
 
-  if (!codes.length){
-    keyList.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);font-size:12px;">Chưa có key nào</div>';
-    return;
-  }
+  try {
+    const allKeys = await loadKeysFromServer();
+    const codes = Object.keys(allKeys).reverse();
 
-  keyList.innerHTML = codes.map(code=>{
-    const k = allKeys[code];
-    const now = Date.now();
-    let status = 'valid', label = 'HỢP LỆ';
-    if (k.used) { status = 'used'; label = 'ĐÃ DÙNG'; }
-    else if (k.expireAt && now > k.expireAt) { status = 'expired'; label = 'HẾT HẠN'; }
+    if (!codes.length){
+      keyList.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);font-size:12px;">Chưa có key nào</div>';
+      return;
+    }
 
-    const type = k.days >= 999999 ? 'VĨNH VIỄN' : k.days + 'D';
-    const expire = k.expireAt
-      ? new Date(k.expireAt).toLocaleString('vi-VN')
-      : 'Vĩnh viễn';
+    keyList.innerHTML = codes.map(code=>{
+      const k = allKeys[code];
+      const now = Date.now();
+      let status = 'valid', label = 'HỢP LỆ';
+      if (k.used) { status = 'used'; label = 'ĐÃ DÙNG'; }
+      else if (k.expireAt && now > k.expireAt) { status = 'expired'; label = 'HẾT HẠN'; }
 
-    return `
-      <div class="key-item" data-code="${code}">
-        <div>
-          <div class="key-code">${code}</div>
-          <div class="key-info">${type} • Hết hạn: ${expire}</div>
+      const type = k.days >= 999999 ? 'VĨNH VIỄN' : k.days + 'D';
+      const expire = k.expireAt
+        ? new Date(k.expireAt).toLocaleString('vi-VN')
+        : 'Vĩnh viễn';
+
+      return `
+        <div class="key-item" data-code="${code}">
+          <div>
+            <div class="key-code">${code}</div>
+            <div class="key-info">${type} • Hết hạn: ${expire}</div>
+          </div>
+          <span class="key-status ${status}">${label}</span>
         </div>
-        <span class="key-status ${status}">${label}</span>
-      </div>
-    `;
-  }).join('');
+      `;
+    }).join('');
 
-  keyList.querySelectorAll('.key-item').forEach(item=>{
-    item.addEventListener('click', async ()=>{
-      const code = item.dataset.code;
-      const ok = await copyToClipboard(code);
-      if (ok) showToast('✅ ĐÃ COPY: ' + code);
+    keyList.querySelectorAll('.key-item').forEach(item=>{
+      item.addEventListener('click', async ()=>{
+        const code = item.dataset.code;
+        const ok = await copyToClipboard(code);
+        if (ok) showToast('✅ ĐÃ COPY: ' + code);
+      });
     });
-  });
+  } catch(e) {
+    console.error(e);
+    keyList.innerHTML = '<div style="text-align:center;padding:20px;color:#ff5555;font-size:12px;">❌ Không tải được key</div>';
+  }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   ĐÓNG MODAL KHI CLICK NGOÀI
+   ═══════════════════════════════════════════════════════════ */
 document.querySelectorAll('.modal-overlay').forEach(o=>{
   o.addEventListener('click', e=>{ if (e.target === o) o.classList.remove('active'); });
 });
 
+/* ═══════════════════════════════════════════════════════════
+   KHỞI ĐỘNG
+   ═══════════════════════════════════════════════════════════ */
 (function init(){
   const activeKey = localStorage.getItem('activeKey');
   const expireAt = parseInt(localStorage.getItem('activeKeyExpire') || '0');
+  const wasAdmin = sessionStorage.getItem('isAdmin') === 'yes';
 
   if (activeKey){
     if (activeKey === 'ADMIN_MODE' || !expireAt || Date.now() < expireAt){
       showPage('pageMenu');
-      if (activeKey === 'ADMIN_MODE') {
+      if (activeKey === 'ADMIN_MODE' && wasAdmin) {
         isAdmin = true;
         document.getElementById('adminTabBtn').style.display = 'flex';
         document.getElementById('mainTabs').classList.add('has-admin');
