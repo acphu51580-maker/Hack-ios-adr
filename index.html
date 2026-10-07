@@ -10,7 +10,6 @@
 body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .page{display:none}.page.active{display:block}
 
-/* LOGIN */
 #pageLogin{display:none;justify-content:center;align-items:center;min-height:100vh;padding:20px}
 #pageLogin.active{display:flex}
 .login-container{background:var(--panel);border:2px solid var(--border);border-radius:18px;padding:40px 30px;width:100%;max-width:440px;position:relative}
@@ -35,7 +34,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .message.error{color:#ff5555}
 .message.success{color:#55ff88}
 
-/* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);justify-content:center;align-items:center;z-index:100;padding:20px;backdrop-filter:blur(4px)}
 .modal-overlay.active{display:flex}
 .modal{background:var(--panel);border:2px solid var(--border);border-radius:16px;padding:30px 24px;width:100%;max-width:420px;max-height:90vh;overflow-y:auto;animation:slideUp .3s}
@@ -50,7 +48,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .btn-modal.primary{background:#fff;color:#000}
 .btn-modal.primary:hover{background:#ccc}
 
-/* HEADER */
 .header{background:var(--panel);border-bottom:2px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .header-left{display:flex;align-items:center;gap:10px}
 .brand{font-size:18px;letter-spacing:3px;font-weight:bold}
@@ -63,66 +60,20 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .logout-btn{background:#fff;color:#000;border:none;padding:9px 16px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}
 .logout-btn:hover{background:#ccc}
 
-/* ═══════ TABS - FIX NGANG VUÔNG ═══════ */
-.tabs{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:8px;
-  padding:16px 20px;
-  max-width:1100px;
-  margin:0 auto;
-  width:100%;
-}
-.tab{
-  background:var(--panel);
-  color:var(--muted);
-  border:2px solid var(--border);
-  padding:14px 6px;
-  border-radius:12px;
-  cursor:pointer;
-  font-weight:bold;
-  font-size:11px;
-  letter-spacing:1px;
-  transition:.25s;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  min-height:60px;
-}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:16px 20px;max-width:1100px;margin:0 auto;width:100%}
+.tab{background:var(--panel);color:var(--muted);border:2px solid var(--border);padding:14px 6px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:11px;letter-spacing:1px;transition:.25s;display:flex;align-items:center;justify-content:center;text-align:center;min-height:60px}
 .tab:hover{color:#fff;border-color:#444}
 .tab.active{background:#fff;color:#000;border-color:#fff}
-.tab.admin-tab{
-  background:#1a0f0f;
-  border-color:#ff3333;
-  color:#ff5555;
-  grid-column:1 / -1;
-  min-height:auto;
-  padding:12px;
-  font-size:12px;
-  letter-spacing:2px;
-}
+.tab.admin-tab{background:#1a0f0f;border-color:#ff3333;color:#ff5555;grid-column:1 / -1;min-height:auto;padding:12px;font-size:12px;letter-spacing:2px}
 .tab.admin-tab.active{background:#ff3333;color:#fff;border-color:#ff3333}
+.tabs.has-admin .tab.admin-tab{grid-column:auto;min-height:60px;padding:14px 6px;font-size:11px}
 
-/* Khi admin đăng nhập - tab admin + ĐV cùng hàng */
-.tabs.has-admin{
-  grid-template-columns:repeat(4, 1fr);
-}
-.tabs.has-admin .tab.admin-tab{
-  grid-column:auto;
-  min-height:60px;
-  padding:14px 6px;
-  font-size:11px;
-}
-
-/* CONTENT */
 .content{max-width:1100px;margin:0 auto;padding:0 20px 130px;width:100%}
 .tab-content{display:none}
 .tab-content.active{display:block;animation:fadeIn .3s}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .section-title{font-size:14px;letter-spacing:4px;margin-bottom:18px;border-left:4px solid #fff;padding-left:12px;text-transform:uppercase}
 
-/* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .grid-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:700px){.grid-row{grid-template-columns:1fr}}
@@ -131,13 +82,11 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .card.on{border-color:#fff;background:#1f1f1f}
 .card-name{font-size:12px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase}
 
-/* SWITCH */
 .switch{width:54px;height:30px;background:#333;border-radius:15px;position:relative;cursor:pointer;transition:.3s;flex-shrink:0}
 .switch.active{background:#fff}
 .switch-ball{position:absolute;top:3px;left:3px;width:24px;height:24px;background:#fff;border-radius:50%;transition:.3s}
 .switch.active .switch-ball{left:27px;background:#000}
 
-/* ADMIN */
 .key-create-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
 .key-btn{background:var(--panel);color:#fff;border:2px solid var(--border);padding:20px 10px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:13px;letter-spacing:2px;display:flex;flex-direction:column;align-items:center;gap:6px}
 .key-btn .icon{font-size:22px}
@@ -152,21 +101,17 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .key-status.used{background:#333;color:#888}
 .key-status.expired{background:#ff3333;color:#fff}
 
-/* SUCCESS */
 .success-box{text-align:center}
 .success-icon{font-size:55px;margin-bottom:10px}
 .success-key{background:#000;border:2px dashed #fff;border-radius:12px;padding:16px;font-family:monospace;font-size:17px;letter-spacing:2px;font-weight:bold;margin:16px 0 10px;word-break:break-all;cursor:pointer;user-select:none}
 .success-key:hover{background:#111}
 .copy-hint{color:var(--muted);font-size:11px;margin-bottom:18px}
 
-/* NÚT HACK DƯỚI */
 .fixed-activate-bar{
-  position:fixed;
-  bottom:0;left:0;right:0;
+  position:fixed;bottom:0;left:0;right:0;
   padding:14px 20px calc(14px + env(safe-area-inset-bottom, 20px));
   background:linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,.95) 30%, rgba(10,10,10,1) 100%);
-  z-index:50;
-  pointer-events:none;
+  z-index:50;pointer-events:none;
 }
 .btn-hack-activate{
   width:100%;max-width:1100px;margin:0 auto;display:block;
@@ -186,7 +131,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .btn-hack-activate.activated{background:#55ff88;color:#000;box-shadow:0 8px 30px rgba(85,255,136,.4)}
 .btn-hack-activate.activated::before{display:none}
 
-/* TOAST */
 .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(100px);background:#fff;color:#000;padding:12px 24px;border-radius:10px;font-size:13px;font-weight:bold;letter-spacing:1px;opacity:0;transition:.3s;z-index:999;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
@@ -206,7 +150,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 </head>
 <body>
 
-<!-- LOGIN -->
 <div class="page active" id="pageLogin">
   <div class="login-container">
     <div class="brand-name">MR.PHUC</div>
@@ -226,7 +169,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 </div>
 
-<!-- MENU -->
 <div class="page" id="pageMenu">
   <div class="header">
     <div class="header-left">
@@ -310,7 +252,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 </div>
 
-<!-- MODAL ADMIN LOGIN -->
 <div class="modal-overlay" id="adminModal">
   <div class="modal">
     <div class="modal-title">⚙ ADMIN LOGIN</div>
@@ -323,7 +264,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
   </div>
 </div>
 
-<!-- MODAL KEY CREATED -->
 <div class="modal-overlay" id="keyCreatedModal">
   <div class="modal">
     <div class="success-box">
@@ -339,16 +279,10 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 <div class="toast" id="toast">✅ OK</div>
 
 <script>
-/* ═══════════════════════════════════════════════════════════
-   CẤU HÌNH
-   ═══════════════════════════════════════════════════════════ */
 const ADMIN_USER = 'admin';
 const ADMIN_PASS = 'phc51580';
 const ZALO_URL = 'https://zalo.me/0865561731';
 
-/* ═══════════════════════════════════════════════════════════
-   HELPERS
-   ═══════════════════════════════════════════════════════════ */
 function genKey(){
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   const block = () => {
@@ -400,16 +334,10 @@ let isAdmin = false;
 let timerInterval = null;
 let menuInitialized = false;
 
-/* ═══════════════════════════════════════════════════════════
-   BUY KEY
-   ═══════════════════════════════════════════════════════════ */
 document.getElementById('buyKeyBtn').addEventListener('click', () => {
   window.open(ZALO_URL, '_blank');
 });
 
-/* ═══════════════════════════════════════════════════════════
-   DÁN KEY
-   ═══════════════════════════════════════════════════════════ */
 const keyInput = document.getElementById('keyInput');
 const messageEl = document.getElementById('message');
 
@@ -424,9 +352,6 @@ document.getElementById('pasteBtn').addEventListener('click', async () => {
   }
 });
 
-/* ═══════════════════════════════════════════════════════════
-   KÍCH HOẠT KEY
-   ═══════════════════════════════════════════════════════════ */
 document.getElementById('activateBtn').addEventListener('click', () => {
   const key = keyInput.value.trim().toUpperCase();
   if (!key) return showMsg(messageEl, '⚠ Vui lòng nhập key!', 'error');
@@ -458,9 +383,6 @@ document.getElementById('activateBtn').addEventListener('click', () => {
 
 keyInput.addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('activateBtn').click(); });
 
-/* ═══════════════════════════════════════════════════════════
-   ADMIN LOGIN
-   ═══════════════════════════════════════════════════════════ */
 const adminModal = document.getElementById('adminModal');
 const adminUser = document.getElementById('adminUser');
 const adminPass = document.getElementById('adminPass');
@@ -485,7 +407,6 @@ document.getElementById('adminLoginBtn').addEventListener('click', ()=>{
     showPage('pageMenu');
     startMenuSession();
 
-    // Hiện tab admin + đổi layout
     document.getElementById('adminTabBtn').style.display = 'flex';
     document.getElementById('mainTabs').classList.add('has-admin');
     document.getElementById('timerBox').style.display = 'none';
@@ -498,9 +419,6 @@ document.getElementById('adminLoginBtn').addEventListener('click', ()=>{
 });
 adminPass.addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('adminLoginBtn').click(); });
 
-/* ═══════════════════════════════════════════════════════════
-   MENU SESSION
-   ═══════════════════════════════════════════════════════════ */
 function startMenuSession(){
   const timerDisplay = document.getElementById('timerDisplay');
   const expireAt = parseInt(localStorage.getItem('activeKeyExpire') || '0');
@@ -559,9 +477,6 @@ function startMenuSession(){
   });
 }
 
-/* ═══════════════════════════════════════════════════════════
-   NÚT KÍCH HOẠT HACK
-   ═══════════════════════════════════════════════════════════ */
 const hackActivateBtn = document.getElementById('hackActivateBtn');
 let hackActivated = false;
 
@@ -584,9 +499,6 @@ hackActivateBtn.addEventListener('click', () => {
   }
 });
 
-/* ═══════════════════════════════════════════════════════════
-   LOGOUT
-   ═══════════════════════════════════════════════════════════ */
 document.getElementById('menuLogoutBtn').addEventListener('click', ()=>{
   if (confirm('Bạn có chắc muốn thoát?')){
     localStorage.removeItem('activeKey');
@@ -596,24 +508,21 @@ document.getElementById('menuLogoutBtn').addEventListener('click', ()=>{
     hackActivated = false;
     hackActivateBtn.classList.remove('activated');
     hackActivateBtn.textContent = '⚡ KÍCH HOẠT HACK';
-    document.getElementById('mainTabs').classList.remove('has let-admin');
+    document.getElementById('mainTabs').classList.remove('has-admin');
     sessionStorage.removeItem('isAdmin');
     showPage('pageLogin');
   }
 });
 
-/* ═════════════════════════════════════════ status══════════════════
-   ADMIN - TẠO KEY
-   ═══════════════════════════════════════════════════════════ */
- =document.querySelectorAll('.key-btn').forEach(btn=>{
+document.querySelectorAll('.key-btn').forEach(btn=>{
   btn.addEventListener('click', async () => {
     const days = parseInt(btn.dataset.days);
-    const ' code = genKey();
+    const code = genKey();
     const now = Date.now();
-    const expireAt = days >= 999999 ? null : now + days * 24 *valid 60 * 60 * 1000;
+    const expireAt = days >= 999999 ? null : now + days * 24 * 60 * 60 * 1000;
 
     const allKeys = getAllKeys();
-    allKeys[code] = { days, createdAt',: now, expireAt, used: false };
+    allKeys[code] = { days, createdAt: now, expireAt, used: false };
     saveAllKeys(allKeys);
 
     const copied = await copyToClipboard(code);
@@ -653,9 +562,6 @@ document.getElementById('keyCreatedClose').addEventListener('click', ()=>{
   document.getElementById('keyCreatedModal').classList.remove('active');
 });
 
-/* ═══════════════════════════════════════════════════════════
-   RENDER KEY LIST
-   ═══════════════════════════════════════════════════════════ */
 function renderKeys(){
   const keyList = document.getElementById('keyList');
   const allKeys = getAllKeys();
@@ -669,7 +575,7 @@ function renderKeys(){
   keyList.innerHTML = codes.map(code=>{
     const k = allKeys[code];
     const now = Date.now();
-    label = 'HỢP LỆ';
+    let status = 'valid', label = 'HỢP LỆ';
     if (k.used) { status = 'used'; label = 'ĐÃ DÙNG'; }
     else if (k.expireAt && now > k.expireAt) { status = 'expired'; label = 'HẾT HẠN'; }
 
@@ -698,16 +604,10 @@ function renderKeys(){
   });
 }
 
-/* ═══════════════════════════════════════════════════════════
-   ĐÓNG MODAL KHI CLICK NGOÀI
-   ═══════════════════════════════════════════════════════════ */
 document.querySelectorAll('.modal-overlay').forEach(o=>{
   o.addEventListener('click', e=>{ if (e.target === o) o.classList.remove('active'); });
 });
 
-/* ═══════════════════════════════════════════════════════════
-   KHỞI ĐỘNG
-   ═══════════════════════════════════════════════════════════ */
 (function init(){
   const activeKey = localStorage.getItem('activeKey');
   const expireAt = parseInt(localStorage.getItem('activeKeyExpire') || '0');
