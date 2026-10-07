@@ -5,356 +5,149 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mr.Phuc - Key System</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Consolas, monospace; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Consolas,monospace}
+:root{--bg:#0a0a0a;--panel:#141414;--panel2:#1a1a1a;--border:#2a2a2a;--text:#fff;--muted:#888}
+body{background:var(--bg);color:var(--text);min-height:100vh}
 
-:root {
-  --bg: #0a0a0a;
-  --panel: #141414;
-  --panel2: #1a1a1a;
-  --border: #2a2a2a;
-  --text: #ffffff;
-  --muted: #888;
-}
+/* Ẩn/hiện trang */
+.page{display:none}
+.page.active{display:block}
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
+/* ============ TRANG LOGIN ============ */
+#pageLogin{display:none;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+#pageLogin.active{display:flex}
 
-/* ===== LOGIN BOX ===== */
-.login-container {
-  background: var(--panel);
-  border: 2px solid var(--border);
-  border-radius: 18px;
-  padding: 40px 30px;
-  width: 100%;
-  max-width: 440px;
-  box-shadow: 0 0 60px rgba(255,255,255,0.06);
-  position: relative;
-}
+.login-container{background:var(--panel);border:2px solid var(--border);border-radius:18px;padding:40px 30px;width:100%;max-width:440px;box-shadow:0 0 60px rgba(255,255,255,.06);position:relative}
+.brand-name{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:6px 22px;border-radius:20px;font-weight:bold;font-size:13px;letter-spacing:3px;white-space:nowrap}
+.logo-box{text-align:center;margin-bottom:28px;margin-top:10px}
+.logo{font-size:55px;margin-bottom:8px;filter:drop-shadow(0 0 15px rgba(255,255,255,.3))}
+.title{font-size:24px;letter-spacing:5px;margin-bottom:6px;font-weight:bold}
+.subtitle{color:var(--muted);font-size:12px;letter-spacing:2px}
 
-.brand-name {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  color: #000;
-  padding: 6px 22px;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 13px;
-  letter-spacing: 3px;
-  white-space: nowrap;
-}
+.input-group{position:relative;margin-bottom:16px}
+.input-group input{width:100%;padding:15px 50px 15px 16px;background:#000;border:2px solid var(--border);border-radius:12px;color:#fff;font-size:14px;outline:none;transition:.25s;letter-spacing:1px}
+.input-group input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.05)}
+.input-group input::placeholder{color:#555;letter-spacing:0}
+.paste-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:#222;border:1px solid var(--border);color:#fff;width:38px;height:38px;border-radius:9px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.2s}
+.paste-btn:hover{background:#fff;color:#000}
 
-.logo-box { text-align: center; margin-bottom: 28px; margin-top: 10px; }
-.logo {
-  font-size: 55px;
-  margin-bottom: 8px;
-  filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
-}
-.title {
-  font-size: 24px;
-  letter-spacing: 5px;
-  margin-bottom: 6px;
-  font-weight: bold;
-}
-.subtitle { color: var(--muted); font-size: 12px; letter-spacing: 2px; }
+.btn-activate{width:100%;padding:15px;background:#fff;color:#000;border:none;border-radius:12px;font-weight:bold;letter-spacing:3px;cursor:pointer;font-size:14px;transition:.25s}
+.btn-activate:hover{background:#ccc}
 
-/* ===== INPUT ===== */
-.input-group {
-  position: relative;
-  margin-bottom: 16px;
-}
-.input-group input {
-  width: 100%;
-  padding: 15px 50px 15px 16px;
-  background: #000;
-  border: 2px solid var(--border);
-  border-radius: 12px;
-  color: #fff;
-  font-size: 14px;
-  outline: none;
-  transition: .25s;
-  letter-spacing: 1px;
-}
-.input-group input:focus { border-color: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,0.05); }
-.input-group input::placeholder { color: #555; letter-spacing: 0; }
+.admin-link{text-align:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;cursor:pointer;letter-spacing:2px;transition:.2s}
+.admin-link:hover{color:#fff}
 
-.paste-btn {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #222;
-  border: 1px solid var(--border);
-  color: #fff;
-  width: 38px;
-  height: 38px;
-  border-radius: 9px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: .2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.paste-btn:hover { background: #fff; color: #000; }
-.paste-btn:active { transform: translateY(-50%) scale(0.92); }
+.message{text-align:center;margin-top:14px;font-size:12px;min-height:16px;letter-spacing:1px}
+.message.error{color:#ff5555}
+.message.success{color:#55ff88}
 
-/* ===== BUTTON ===== */
-.btn-activate {
-  width: 100%;
-  padding: 15px;
-  background: #fff;
-  color: #000;
-  border: none;
-  border-radius: 12px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: .25s;
-  margin-bottom: 6px;
-}
-.btn-activate:hover { background: #ccc; transform: translateY(-1px); }
-.btn-activate:active { transform: translateY(0); }
+/* ============ MODAL ============ */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);justify-content:center;align-items:center;z-index:100;padding:20px;backdrop-filter:blur(4px)}
+.modal-overlay.active{display:flex}
+.modal{background:var(--panel);border:2px solid var(--border);border-radius:16px;padding:30px 24px;width:100%;max-width:420px;animation:slideUp .3s}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.modal-title{text-align:center;margin-bottom:22px;letter-spacing:4px;font-size:16px;font-weight:bold}
+.modal input{width:100%;padding:13px 16px;margin-bottom:12px;background:#000;border:2px solid var(--border);border-radius:10px;color:#fff;outline:none;font-size:14px;letter-spacing:1px}
+.modal input:focus{border-color:#fff}
+.modal input::placeholder{color:#555;letter-spacing:0}
+.modal-buttons{display:flex;gap:10px;margin-top:14px}
+.btn-modal{flex:1;padding:13px;background:#222;color:#fff;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-weight:bold;letter-spacing:2px;font-size:12px;transition:.2s}
+.btn-modal:hover{background:#333}
+.btn-modal.primary{background:#fff;color:#000}
+.btn-modal.primary:hover{background:#ccc}
 
-/* ===== ADMIN LINK ===== */
-.admin-link {
-  text-align: center;
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 12px;
-  cursor: pointer;
-  letter-spacing: 2px;
-  transition: .2s;
-  user-select: none;
-}
-.admin-link:hover { color: #fff; }
+/* ============ HEADER CHUNG (MENU + ADMIN) ============ */
+.header{background:var(--panel);border-bottom:2px solid var(--border);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.header-left{display:flex;align-items:center;gap:10px}
+.brand{font-size:18px;letter-spacing:3px;font-weight:bold}
+.tag{background:#fff;color:#000;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:bold;letter-spacing:2px}
+.header-right{display:flex;align-items:center;gap:12px}
 
-/* ===== MESSAGE ===== */
-.message {
-  text-align: center;
-  margin-top: 14px;
-  font-size: 12px;
-  min-height: 16px;
-  letter-spacing: 1px;
-}
-.message.error { color: #ff5555; }
-.message.success { color: #55ff88; }
+.timer-box{background:#000;border:2px solid var(--border);border-radius:10px;padding:8px 14px;display:flex;align-items:center;gap:10px;font-size:13px}
+.timer-label{color:var(--muted);font-size:11px;letter-spacing:1px}
+.timer-value{color:#fff;font-weight:bold;font-family:monospace;font-size:14px;letter-spacing:1px}
+.timer-value.warning{color:#ff5555;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.5}}
 
-/* ===== MODAL ===== */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-  padding: 20px;
-  backdrop-filter: blur(4px);
-}
-.modal-overlay.active { display: flex; }
+.logout-btn{background:#fff;color:#000;border:none;padding:9px 16px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px;letter-spacing:1px;transition:.2s}
+.logout-btn:hover{background:#ccc}
 
-.modal {
-  background: var(--panel);
-  border: 2px solid var(--border);
-  border-radius: 16px;
-  padding: 30px 24px;
-  width: 100%;
-  max-width: 420px;
-  max-height: 90vh;
-  overflow-y: auto;
-  animation: slideUp .3s ease;
-}
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* ============ TAB MENU ============ */
+.tabs{display:flex;gap:10px;padding:20px;flex-wrap:wrap;max-width:1100px;margin:0 auto;width:100%}
+.tab{flex:1;min-width:140px;background:var(--panel);color:var(--muted);border:2px solid var(--border);padding:14px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:12px;letter-spacing:2px;transition:.25s;display:flex;align-items:center;justify-content:center;gap:6px}
+.tab:hover{color:#fff;border-color:#444}
+.tab.active{background:#fff;color:#000;border-color:#fff}
 
-.modal-title {
-  text-align: center;
-  margin-bottom: 22px;
-  letter-spacing: 4px;
-  font-size: 16px;
-  font-weight: bold;
-}
-.modal input {
-  width: 100%;
-  padding: 13px 16px;
-  margin-bottom: 12px;
-  background: #000;
-  border: 2px solid var(--border);
-  border-radius: 10px;
-  color: #fff;
-  outline: none;
-  font-size: 14px;
-  letter-spacing: 1px;
-  transition: .2s;
-}
-.modal input:focus { border-color: #fff; }
-.modal input::placeholder { color: #555; letter-spacing: 0; }
+.content{max-width:1100px;margin:0 auto;padding:0 20px 40px;width:100%}
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-.modal-buttons { display: flex; gap: 10px; margin-top: 14px; }
-.btn-modal {
-  flex: 1;
-  padding: 13px;
-  background: #222;
-  color: #fff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  letter-spacing: 2px;
-  font-size: 12px;
-  transition: .2s;
-}
-.btn-modal:hover { background: #333; }
-.btn-modal.primary { background: #fff; color: #000; }
-.btn-modal.primary:hover { background: #ccc; }
+.section-title{font-size:14px;letter-spacing:4px;margin-bottom:18px;border-left:4px solid #fff;padding-left:12px;text-transform:uppercase}
 
-/* ===== ADMIN PANEL ===== */
-.section-label {
-  font-size: 12px;
-  letter-spacing: 3px;
-  margin-bottom: 14px;
-  border-left: 4px solid #fff;
-  padding-left: 10px;
-  color: #fff;
-}
-.key-create-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 24px;
-}
-@media (max-width: 480px) {
-  .key-create-grid { grid-template-columns: repeat(2, 1fr); }
-  .title { font-size: 20px; letter-spacing: 3px; }
-}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.card{background:var(--panel);border:2px solid var(--border);border-radius:12px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;transition:.25s}
+.card:hover{border-color:#fff}
+.card.on{border-color:#fff;background:#1f1f1f}
+.card-name{font-size:12px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase}
 
-.key-btn {
-  background: var(--panel2);
-  color: #fff;
-  border: 2px solid var(--border);
-  padding: 16px 8px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 12px;
-  letter-spacing: 1px;
-  transition: .2s;
-}
-.key-btn:hover { background: #fff; color: #000; border-color: #fff; transform: translateY(-2px); }
-.key-btn:active { transform: translateY(0); }
+/* SWITCH TRÁI -> PHẢI */
+.switch{width:54px;height:30px;background:#333;border-radius:15px;position:relative;cursor:pointer;transition:.3s;flex-shrink:0}
+.switch.active{background:#fff}
+.switch-ball{position:absolute;top:3px;left:3px;width:24px;height:24px;background:#fff;border-radius:50%;transition:.3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.switch.active .switch-ball{left:27px;background:#000}
 
-.key-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-height: 260px;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-.key-item {
-  background: var(--panel2);
-  border: 2px solid var(--border);
-  border-radius: 10px;
-  padding: 12px 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 12px;
-  transition: .2s;
-  cursor: pointer;
-}
-.key-item:hover { border-color: #fff; background: #1f1f1f; }
-.key-code {
-  font-family: monospace;
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 13px;
-}
-.key-info { color: var(--muted); font-size: 10px; margin-top: 4px; letter-spacing: 1px; }
-.key-status {
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-.key-status.used { background: #333; color: #888; }
-.key-status.valid { background: #fff; color: #000; }
+/* ============ ADMIN ============ */
+.container{width:100%;max-width:900px;margin:0 auto;padding:30px 20px}
+.key-create-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+.key-btn{background:var(--panel);color:#fff;border:2px solid var(--border);padding:20px 10px;border-radius:12px;cursor:pointer;font-weight:bold;font-size:13px;letter-spacing:2px;transition:.2s;display:flex;flex-direction:column;align-items:center;gap:6px}
+.key-btn .icon{font-size:22px}
+.key-btn:hover{background:#fff;color:#000;border-color:#fff;transform:translateY(-2px)}
+.key-btn:active{transform:translateY(0)}
 
-/* ===== SUCCESS MODAL ===== */
-.success-box { text-align: center; }
-.success-icon { font-size: 55px; margin-bottom: 10px; }
-.success-key {
-  background: #000;
-  border: 2px dashed #fff;
-  border-radius: 12px;
-  padding: 16px;
-  font-family: monospace;
-  font-size: 16px;
-  letter-spacing: 2px;
-  font-weight: bold;
-  margin: 16px 0 10px;
-  word-break: break-all;
-  cursor: pointer;
-  transition: .2s;
-  user-select: none;
-}
-.success-key:hover { background: #111; transform: scale(1.02); }
-.success-key:active { transform: scale(0.98); }
-.copy-hint { color: var(--muted); font-size: 11px; margin-bottom: 18px; letter-spacing: 1px; transition: .2s; }
+.key-list{display:flex;flex-direction:column;gap:10px;max-height:500px;overflow-y:auto;padding-right:4px}
+.key-item{background:var(--panel);border:2px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;cursor:pointer;transition:.2s}
+.key-item:hover{border-color:#fff;background:#1f1f1f}
+.key-code{font-family:monospace;font-weight:bold;letter-spacing:1px;font-size:14px}
+.key-info{color:var(--muted);font-size:11px;margin-top:4px;letter-spacing:1px}
+.key-status{padding:4px 10px;border-radius:6px;font-size:10px;font-weight:bold;letter-spacing:1px}
+.key-status.valid{background:#fff;color:#000}
+.key-status.used{background:#333;color:#888}
+.key-status.expired{background:#ff3333;color:#fff}
 
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #000; border-radius: 4px; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #555; }
+/* SUCCESS KEY */
+.success-box{text-align:center}
+.success-icon{font-size:55px;margin-bottom:10px}
+.success-key{background:#000;border:2px dashed #fff;border-radius:12px;padding:16px;font-family:monospace;font-size:17px;letter-spacing:2px;font-weight:bold;margin:16px 0 10px;word-break:break-all;cursor:pointer;transition:.2s;user-select:none}
+.success-key:hover{background:#111;transform:scale(1.02)}
+.success-key:active{transform:scale(.98)}
+.copy-hint{color:var(--muted);font-size:11px;margin-bottom:18px;letter-spacing:1px}
 
-/* ===== TOAST COPY ===== */
-.toast {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%) translateY(100px);
-  background: #fff;
-  color: #000;
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  opacity: 0;
-  transition: .3s;
-  z-index: 999;
-  pointer-events: none;
-}
-.toast.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+/* TOAST */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:#fff;color:#000;padding:12px 24px;border-radius:10px;font-size:13px;font-weight:bold;letter-spacing:1px;opacity:0;transition:.3s;z-index:999;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#000;border-radius:4px}
+::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#555}
+
+@media(max-width:600px){
+  .brand{font-size:15px}
+  .timer-box{padding:6px 10px;font-size:11px}
+  .tab{min-width:90px;font-size:11px;padding:10px}
+  .key-create-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
 <body>
 
-  <!-- ===== LOGIN BOX ===== -->
+<!-- ============================================================
+     TRANG 1: LOGIN
+     ============================================================ -->
+<div class="page active" id="pageLogin">
   <div class="login-container">
     <div class="brand-name">MR.PHUC</div>
-
     <div class="logo-box">
       <div class="logo">🔐</div>
       <div class="title">KEY SYSTEM</div>
@@ -367,69 +160,144 @@ body {
     </div>
 
     <button class="btn-activate" id="activateBtn">KÍCH HOẠT</button>
-
     <div class="message" id="message"></div>
-
     <div class="admin-link" id="openAdminBtn">⚙ ADMIN LOGIN</div>
   </div>
+</div>
 
-  <!-- ===== MODAL ĐĂNG NHẬP ADMIN ===== -->
-  <div class="modal-overlay" id="adminModal">
-    <div class="modal">
-      <div class="modal-title">⚙ ADMIN LOGIN</div>
-      <input type="text" id="adminUser" placeholder="Tên đăng nhập" value="admin">
-      <input type="password" id="adminPass" placeholder="Mật khẩu">
-      <div class="modal-buttons">
-        <button class="btn-modal primary" id="adminLoginBtn">ĐĂNG NHẬP</button>
-        <button class="btn-modal" id="adminCloseBtn">ĐÓNG</button>
+<!-- ============================================================
+     TRANG 2: MENU (user nhập key mới vào)
+     ============================================================ -->
+<div class="page" id="pageMenu">
+  <div class="header">
+    <div class="header-left">
+      <span class="brand">⚡ MENU PANEL</span>
+      <span class="tag">MR.PHUC</span>
+    </div>
+    <div class="header-right">
+      <div class="timer-box">
+        <span class="timer-label">⏱ CÒN LẠI:</span>
+        <span class="timer-value" id="timerDisplay">--:--:--</span>
       </div>
+      <button class="logout-btn" id="menuLogoutBtn">THOÁT</button>
     </div>
   </div>
 
-  <!-- ===== MODAL ADMIN PANEL ===== -->
-  <div class="modal-overlay" id="adminPanel">
-    <div class="modal" style="max-width:600px;">
-      <div class="modal-title">🛡 ADMIN PANEL</div>
+  <div class="tabs">
+    <button class="tab active" data-tab="modSkin">🎨 MOD SKIN</button>
+    <button class="tab" data-tab="menuVip">👑 MENU VIP</button>
+    <button class="tab" data-tab="aimLock">🎯 AIM LOCK</button>
+    <button class="tab" data-tab="dvDich">👁 ĐV + ĐỊCH</button>
+  </div>
 
-      <div class="section-label">TẠO KEY MỚI</div>
-      <div class="key-create-grid">
-        <button class="key-btn" data-days="1">KEY 1D</button>
-        <button class="key-btn" data-days="3">KEY 3D</button>
-        <button class="key-btn" data-days="7">KEY 7D</button>
-        <button class="key-btn" data-days="30">KEY 30D</button>
-        <button class="key-btn" data-days="60">KEY 60D</button>
-        <button class="key-btn" data-days="999999">VĨNH VIỄN</button>
+  <div class="content">
+    <div class="tab-content active" id="modSkin">
+      <h3 class="section-title">Mod Skin</h3>
+      <div class="grid">
+        <div class="card"><span class="card-name">Mod Hellokitti</span><div class="switch" data-switch="mod_hellokitti"><div class="switch-ball"></div></div></div>
+        <div class="card"><span class="card-name">Mod Fun Đồ 7 Đá</span><div class="switch" data-switch="mod_fun_do_7_da"><div class="switch-ball"></div></div></div>
+        <div class="card"><span class="card-name">Mod Fun Súng</span><div class="switch" data-switch="mod_fun_sung"><div class="switch-ball"></div></div></div>
       </div>
+    </div>
 
-      <div class="section-label">DANH SÁCH KEY (click để copy)</div>
-      <div class="key-list" id="keyList"></div>
+    <div class="tab-content" id="menuVip">
+      <h3 class="section-title">Menu Vip</h3>
+      <div class="grid">
+        <div class="card"><span class="card-name">Menu V1</span><div class="switch" data-switch="menu_v1"><div class="switch-ball"></div></div></div>
+        <div class="card"><span class="card-name">Menu V2</span><div class="switch" data-switch="menu_v2"><div class="switch-ball"></div></div></div>
+        <div class="card"><span class="card-name">Menu V3</span><div class="switch" data-switch="menu_v3"><div class="switch-ball"></div></div></div>
+        <div class="card"><span class="card-name">Menu Pro Fix Văng</span><div class="switch" data-switch="menu_pro_fix_vang"><div class="switch-ball"></div></div></div>
+      </div>
+    </div>
 
-      <div class="modal-buttons" style="margin-top:20px;">
-        <button class="btn-modal" id="adminLogoutBtn">ĐĂNG XUẤT</button>
-        <button class="btn-modal" id="adminPanelClose">ĐÓNG</button>
+    <div class="tab-content" id="aimLock">
+      <h3 class="section-title">Aim Lock</h3>
+      <div class="grid">
+        <div class="card"><span class="card-name">Aim Neck</span><div class="switch" data-switch="aim_neck"><div class="switch-ball"></div></div></div>
+        <div class="card"><span class="card-name">Aim Cổ</span><div class="switch" data-switch="aim_co"><div class="switch-ball"></div></div></div>
+        <div class="card"><span class="card-name">Aim Body</span><div class="switch" data-switch="aim_body"><div class="switch-ball"></div></div></div>
+        <div class="card"><span class="card-name">Aim Đầu</span><div class="switch" data-switch="aim_dau"><div class="switch-ball"></div></div></div>
+        <div class="card"><span class="card-name">Aim Đổi Ngồi</span><div class="switch" data-switch="aim_doi_ngoi"><div class="switch-ball"></div></div></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="dvDich">
+      <h3 class="section-title">ĐV + Địch</h3>
+      <div class="grid">
+        <div class="card"><span class="card-name">ĐV Nhìn Xuyên Keo</span><div class="switch" data-switch="dv_nhin_xuyen_keo"><div class="switch-ball"></div></div></div>
+        <div class="card"><span class="card-name">ĐV Người</span><div class="switch" data-switch="dv_nguoi"><div class="switch-ball"></div></div></div>
+        <div class="card"><span class="card-name">ĐV Súng</span><div class="switch" data-switch="dv_sung"><div class="switch-ball"></div></div></div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- ===== MODAL THÔNG BÁO KEY ĐÃ TẠO ===== -->
-  <div class="modal-overlay" id="keyCreatedModal">
-    <div class="modal" style="max-width:400px;">
-      <div class="success-box">
-        <div class="success-icon">✅</div>
-        <div class="modal-title" style="margin-bottom:8px;">TẠO KEY THÀNH CÔNG</div>
-        <div class="success-key" id="createdKeyText">----</div>
-        <div class="copy-hint" id="copyHint">👆 Nhấn vào key để copy</div>
-        <button class="btn-modal primary" id="keyCreatedClose" style="width:100%;">ĐÓNG</button>
-      </div>
+<!-- ============================================================
+     TRANG 3: ADMIN (chỉ admin mới vào)
+     ============================================================ -->
+<div class="page" id="pageAdmin">
+  <div class="header">
+    <div class="header-left">
+      <span class="brand">🛡 ADMIN PANEL</span>
+      <span class="tag">MR.PHUC</span>
+    </div>
+    <div class="header-right">
+      <span style="font-size:13px;color:var(--muted);letter-spacing:1px">👤 admin</span>
+      <button class="logout-btn" id="adminLogoutBtn">ĐĂNG XUẤT</button>
     </div>
   </div>
 
-  <!-- ===== TOAST ===== -->
-  <div class="toast" id="toast">✅ ĐÃ COPY KEY!</div>
+  <div class="container">
+    <h2 class="section-title">Tạo Key Mới</h2>
+    <div class="key-create-grid">
+      <button class="key-btn" data-days="1"><span class="icon">📅</span>KEY 1D</button>
+      <button class="key-btn" data-days="3"><span class="icon">📅</span>KEY 3D</button>
+      <button class="key-btn" data-days="7"><span class="icon">🔥</span>KEY 7D</button>
+      <button class="key-btn" data-days="30"><span class="icon">💎</span>KEY 30D</button>
+      <button class="key-btn" data-days="60"><span class="icon">👑</span>KEY 60D</button>
+      <button class="key-btn" data-days="999999"><span class="icon">♾️</span>VĨNH VIỄN</button>
+    </div>
+
+    <h2 class="section-title">Danh Sách Key <span style="font-size:10px;color:var(--muted);letter-spacing:1px">(click để copy)</span></h2>
+    <div class="key-list" id="keyList"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MODAL ADMIN LOGIN
+     ============================================================ -->
+<div class="modal-overlay" id="adminModal">
+  <div class="modal">
+    <div class="modal-title">⚙ ADMIN LOGIN</div>
+    <input type="text" id="adminUser" placeholder="Tên đăng nhập" value="admin">
+    <input type="password" id="adminPass" placeholder="Mật khẩu">
+    <div class="modal-buttons">
+      <button class="btn-modal primary" id="adminLoginBtn">ĐĂNG NHẬP</button>
+      <button class="btn-modal" id="adminCloseBtn">ĐÓNG</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MODAL KEY VỪA TẠO
+     ============================================================ -->
+<div class="modal-overlay" id="keyCreatedModal">
+  <div class="modal">
+    <div class="success-box">
+      <div class="success-icon">✅</div>
+      <div class="modal-title">TẠO KEY THÀNH CÔNG</div>
+      <div class="success-key" id="createdKeyText">----</div>
+      <div class="copy-hint" id="copyHint">👆 Nhấn vào key để copy</div>
+      <button class="btn-modal" id="keyCreatedClose">ĐÓNG</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">✅ OK</div>
 
 <script>
 /* ============================================================
-   CONFIG - MR.PHUC
+   CẤU HÌNH
    ============================================================ */
 const ADMIN_USER = 'admin';
 const ADMIN_PASS = 'phc51580';
@@ -437,9 +305,7 @@ const ADMIN_PASS = 'phc51580';
 /* ============================================================
    HELPERS
    ============================================================ */
-
-// Tạo key dạng: PHUC-XXX-XXX (XXX = 3 ký tự A-Z0-9)
-function genKey() {
+function genKey(){
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   const block = () => {
     let s = '';
@@ -448,31 +314,15 @@ function genKey() {
   };
   return `PHUC-${block()}-${block()}`;
 }
+function getKeys(){return JSON.parse(localStorage.getItem('keys')||'[]')}
+function saveKeys(a){localStorage.setItem('keys',JSON.stringify(a))}
+function showMsg(el,t,type){el.textContent=t;el.className='message '+(type||'')}
 
-function getKeys() { return JSON.parse(localStorage.getItem('keys') || '[]'); }
-function saveKeys(arr) { localStorage.setItem('keys', JSON.stringify(arr)); }
-function showMsg(el, text, type) {
-  el.textContent = text;
-  el.className = 'message ' + (type || '');
-}
-
-// Toast thông báo copy
-const toastEl = document.getElementById('toast');
-let toastTimer = null;
-function showToast(text) {
-  toastEl.textContent = text || '✅ ĐÃ COPY KEY!';
-  toastEl.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toastEl.classList.remove('show'), 1800);
-}
-
-// Copy vào clipboard (fallback cho trình duyệt cũ)
-async function copyToClipboard(text) {
-  try {
+async function copyToClipboard(text){
+  try{
     await navigator.clipboard.writeText(text);
     return true;
-  } catch (e) {
-    // Fallback
+  } catch(e){
     const ta = document.createElement('textarea');
     ta.value = text;
     ta.style.position = 'fixed';
@@ -480,34 +330,50 @@ async function copyToClipboard(text) {
     document.body.appendChild(ta);
     ta.select();
     let ok = false;
-    try { ok = document.execCommand('copy'); } catch(_) {}
+    try{ ok = document.execCommand('copy'); }catch(_){}
     document.body.removeChild(ta);
     return ok;
   }
 }
 
+const toastEl = document.getElementById('toast');
+let toastTimer = null;
+function showToast(text){
+  toastEl.textContent = text || '✅ ĐÃ COPY!';
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>toastEl.classList.remove('show'), 1800);
+}
+
 /* ============================================================
-   NÚT DÁN KEY
+   CHUYỂN TRANG
+   ============================================================ */
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+/* ============================================================
+   TRANG LOGIN - XỬ LÝ
    ============================================================ */
 const keyInput = document.getElementById('keyInput');
 const messageEl = document.getElementById('message');
-const activateBtn = document.getElementById('activateBtn');
 
+// Nút DÁN KEY
 document.getElementById('pasteBtn').addEventListener('click', async () => {
   try {
     const text = await navigator.clipboard.readText();
     keyInput.value = text.trim().toUpperCase();
     showMsg(messageEl, '📋 Đã dán key!', 'success');
-    setTimeout(() => showMsg(messageEl, '', ''), 1500);
-  } catch (e) {
+    setTimeout(()=>showMsg(messageEl,'',''),1500);
+  } catch(e) {
     showMsg(messageEl, '❌ Không thể dán - cấp quyền clipboard!', 'error');
   }
 });
 
-/* ============================================================
-   KÍCH HOẠT KEY
-   ============================================================ */
-activateBtn.addEventListener('click', () => {
+// Nút KÍCH HOẠT
+document.getElementById('activateBtn').addEventListener('click', () => {
   const key = keyInput.value.trim().toUpperCase();
   if (!key) return showMsg(messageEl, '⚠ Vui lòng nhập key!', 'error');
 
@@ -518,97 +384,153 @@ activateBtn.addEventListener('click', () => {
   if (found.used) return showMsg(messageEl, '❌ Key đã được sử dụng!', 'error');
 
   const now = Date.now();
-  if (found.expireAt && now > found.expireAt) {
-    return showMsg(messageEl, '❌ Key đã hết hạn!', 'error');
-  }
+  if (found.expireAt && now > found.expireAt) return showMsg(messageEl, '❌ Key đã hết hạn!', 'error');
 
-  // Đánh dấu đã dùng
   found.used = true;
   found.usedAt = now;
   saveKeys(keys);
 
+  localStorage.setItem('activeKey', key);
+  localStorage.setItem('activeKeyExpire', found.expireAt || 0);
+
   const typeLabel = found.days >= 999999 ? 'VĨNH VIỄN' : found.days + ' NGÀY';
   showMsg(messageEl, `✅ Kích hoạt thành công! Gói: ${typeLabel}`, 'success');
-  keyInput.value = '';
+
+  setTimeout(()=>{
+    showPage('pageMenu');
+    startMenuSession();
+  }, 800);
 });
 
-keyInput.addEventListener('keypress', e => {
-  if (e.key === 'Enter') activateBtn.click();
-});
+keyInput.addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('activateBtn').click(); });
 
 /* ============================================================
-   ADMIN LOGIN
+   MODAL ADMIN LOGIN
    ============================================================ */
 const adminModal = document.getElementById('adminModal');
-const adminPanel = document.getElementById('adminPanel');
 const adminUser = document.getElementById('adminUser');
 const adminPass = document.getElementById('adminPass');
 
-document.getElementById('openAdminBtn').addEventListener('click', () => {
+document.getElementById('openAdminBtn').addEventListener('click', ()=>{
   adminModal.classList.add('active');
   adminPass.value = '';
-  setTimeout(() => adminPass.focus(), 100);
+  setTimeout(()=>adminPass.focus(),100);
 });
+document.getElementById('adminCloseBtn').addEventListener('click',()=>adminModal.classList.remove('active'));
 
-document.getElementById('adminCloseBtn').addEventListener('click', () => {
-  adminModal.classList.remove('active');
-});
-
-document.getElementById('adminLoginBtn').addEventListener('click', () => {
+document.getElementById('adminLoginBtn').addEventListener('click', ()=>{
   const u = adminUser.value.trim();
   const p = adminPass.value;
   if (u === ADMIN_USER && p === ADMIN_PASS) {
     adminModal.classList.remove('active');
-    adminPanel.classList.add('active');
+    showPage('pageAdmin');
     renderKeys();
   } else {
     alert('❌ Sai tên đăng nhập hoặc mật khẩu!');
     adminPass.value = '';
   }
 });
+adminPass.addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('adminLoginBtn').click(); });
 
-adminPass.addEventListener('keypress', e => {
-  if (e.key === 'Enter') document.getElementById('adminLoginBtn').click();
-});
+/* ============================================================
+   MENU SESSION - ĐỒNG HỒ + TAB + SWITCH
+   ============================================================ */
+let timerInterval = null;
+let menuInitialized = false;
 
-document.getElementById('adminLogoutBtn').addEventListener('click', () => {
-  adminPanel.classList.remove('active');
-  alert('👋 Đã đăng xuất!');
-});
+function startMenuSession(){
+  // Đồng hồ đếm ngược
+  const timerDisplay = document.getElementById('timerDisplay');
+  const expireAt = parseInt(localStorage.getItem('activeKeyExpire') || '0');
 
-document.getElementById('adminPanelClose').addEventListener('click', () => {
-  adminPanel.classList.remove('active');
+  function updateTimer(){
+    if (!expireAt || expireAt === 0){
+      timerDisplay.textContent = 'VĨNH VIỄN ∞';
+      timerDisplay.classList.remove('warning');
+      return;
+    }
+    const left = expireAt - Date.now();
+    if (left <= 0){
+      timerDisplay.textContent = 'HẾT HẠN';
+      timerDisplay.classList.add('warning');
+      localStorage.removeItem('activeKey');
+      localStorage.removeItem('activeKeyExpire');
+      clearInterval(timerInterval);
+      setTimeout(()=>{alert('⚠ Key đã hết hạn!'); showPage('pageLogin');}, 500);
+      return;
+    }
+    const d = Math.floor(left / 86400000);
+    const h = Math.floor((left % 86400000) / 3600000);
+    const m = Math.floor((left % 3600000) / 60000);
+    const s = Math.floor((left % 60000) / 1000);
+    if (left < 3600000) timerDisplay.classList.add('warning');
+    else timerDisplay.classList.remove('warning');
+    timerDisplay.textContent = `${String(d).padStart(2,'0')}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  }
+
+  clearInterval(timerInterval);
+  updateTimer();
+  timerInterval = setInterval(updateTimer, 1000);
+
+  // Chỉ gán sự kiện 1 lần
+  if (menuInitialized) return;
+  menuInitialized = true;
+
+  // Tabs
+  document.querySelectorAll('.tab').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Switch
+  document.querySelectorAll('.switch').forEach(sw=>{
+    sw.addEventListener('click', ()=>{
+      sw.classList.toggle('active');
+      const card = sw.closest('.card');
+      if (card) card.classList.toggle('on', sw.classList.contains('active'));
+      const name = sw.dataset.switch;
+      const on = sw.classList.contains('active');
+      console.log(`[MENU] ${name} = ${on ? 'BẬT' : 'TẮT'}`);
+      showToast(`${on ? '🟢 BẬT' : '⚫ TẮT'} • ${name}`);
+    });
+  });
+}
+
+// Nút THOÁT ở menu
+document.getElementById('menuLogoutBtn').addEventListener('click', ()=>{
+  if (confirm('Bạn có chắc muốn thoát?')){
+    localStorage.removeItem('activeKey');
+    localStorage.removeItem('activeKeyExpire');
+    clearInterval(timerInterval);
+    showPage('pageLogin');
+  }
 });
 
 /* ============================================================
    ADMIN - TẠO KEY
    ============================================================ */
-document.querySelectorAll('.key-btn').forEach(btn => {
+document.querySelectorAll('.key-btn').forEach(btn=>{
   btn.addEventListener('click', async () => {
     const days = parseInt(btn.dataset.days);
-    const code = genKey(); // PHUC-XXX-XXX
+    const code = genKey();
     const now = Date.now();
     const expireAt = days >= 999999 ? null : now + days * 24 * 60 * 60 * 1000;
 
     const keys = getKeys();
-    keys.push({
-      code,
-      days,
-      createdAt: now,
-      expireAt,
-      used: false
-    });
+    keys.push({ code, days, createdAt: now, expireAt, used: false });
     saveKeys(keys);
 
-    // === TỰ ĐỘNG COPY NGAY KHI TẠO XONG ===
     const copied = await copyToClipboard(code);
 
-    // Hiện modal key vừa tạo
     document.getElementById('createdKeyText').textContent = code;
     document.getElementById('keyCreatedModal').classList.add('active');
 
     const hint = document.getElementById('copyHint');
-    if (copied) {
+    if (copied){
       hint.textContent = '✅ Đã tự động copy vào clipboard!';
       hint.style.color = '#55ff88';
       showToast('✅ ĐÃ COPY KEY!');
@@ -621,50 +543,47 @@ document.querySelectorAll('.key-btn').forEach(btn => {
   });
 });
 
-/* ============================================================
-   CLICK VÀO KEY VỪA TẠO -> COPY LẠI
-   ============================================================ */
-document.getElementById('createdKeyText').addEventListener('click', async function() {
-  const code = this.textContent;
-  const ok = await copyToClipboard(code);
+document.getElementById('createdKeyText').addEventListener('click', async function(){
+  const ok = await copyToClipboard(this.textContent);
   const hint = document.getElementById('copyHint');
-  if (ok) {
-    hint.textContent = '✅ Đã copy lại vào clipboard!';
+  if (ok){
+    hint.textContent = '✅ Đã copy lại!';
     hint.style.color = '#55ff88';
     showToast('✅ ĐÃ COPY KEY!');
-    setTimeout(() => {
+    setTimeout(()=>{
       hint.textContent = '👆 Nhấn vào key để copy';
       hint.style.color = '#888';
     }, 1500);
-  } else {
-    hint.textContent = '❌ Không thể copy!';
-    hint.style.color = '#ff5555';
   }
 });
 
-document.getElementById('keyCreatedClose').addEventListener('click', () => {
+document.getElementById('keyCreatedClose').addEventListener('click', ()=>{
   document.getElementById('keyCreatedModal').classList.remove('active');
 });
 
 /* ============================================================
-   RENDER KEY LIST (click từng key để copy)
+   RENDER DANH SÁCH KEY
    ============================================================ */
-function renderKeys() {
+function renderKeys(){
   const keyList = document.getElementById('keyList');
   const keys = getKeys().slice().reverse();
 
-  if (!keys.length) {
+  if (!keys.length){
     keyList.innerHTML = '<div class="key-info" style="text-align:center;padding:20px;">Chưa có key nào</div>';
     return;
   }
 
-  keyList.innerHTML = keys.map(k => {
-    const status = k.used ? 'used' : 'valid';
-    const label = k.used ? 'ĐÃ DÙNG' : 'HỢP LỆ';
+  keyList.innerHTML = keys.map(k=>{
+    const now = Date.now();
+    let status = 'valid', label = 'HỢP LỆ';
+    if (k.used) { status = 'used'; label = 'ĐÃ DÙNG'; }
+    else if (k.expireAt && now > k.expireAt) { status = 'expired'; label = 'HẾT HẠN'; }
+
     const type = k.days >= 999999 ? 'VĨNH VIỄN' : k.days + 'D';
     const expire = k.expireAt
       ? new Date(k.expireAt).toLocaleString('vi-VN')
       : 'Vĩnh viễn';
+
     return `
       <div class="key-item" data-code="${k.code}">
         <div>
@@ -676,9 +595,8 @@ function renderKeys() {
     `;
   }).join('');
 
-  // Gán sự kiện click copy cho từng key trong list
-  keyList.querySelectorAll('.key-item').forEach(item => {
-    item.addEventListener('click', async () => {
+  keyList.querySelectorAll('.key-item').forEach(item=>{
+    item.addEventListener('click', async ()=>{
       const code = item.dataset.code;
       const ok = await copyToClipboard(code);
       if (ok) showToast('✅ ĐÃ COPY: ' + code);
@@ -687,13 +605,42 @@ function renderKeys() {
 }
 
 /* ============================================================
+   ADMIN LOGOUT
+   ============================================================ */
+document.getElementById('adminLogoutBtn').addEventListener('click', ()=>{
+  if (confirm('Đăng xuất khỏi admin?')){
+    showPage('pageLogin');
+  }
+});
+
+/* ============================================================
    ĐÓNG MODAL KHI CLICK NGOÀI
    ============================================================ */
-document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', e => {
-    if (e.target === overlay) overlay.classList.remove('active');
-  });
+document.querySelectorAll('.modal-overlay').forEach(o=>{
+  o.addEventListener('click', e=>{ if (e.target === o) o.classList.remove('active'); });
 });
+
+/* ============================================================
+   KHỞI ĐỘNG - NẾU ĐÃ CÓ KEY THÌ VÀO MENU LUÔN
+   ============================================================ */
+(function init(){
+  const activeKey = localStorage.getItem('activeKey');
+  const expireAt = parseInt(localStorage.getItem('activeKeyExpire') || '0');
+
+  if (activeKey){
+    // Kiểm tra hết hạn
+    if (expireAt && Date.now() > expireAt){
+      localStorage.removeItem('activeKey');
+      localStorage.removeItem('activeKeyExpire');
+      showPage('pageLogin');
+    } else {
+      showPage('pageMenu');
+      startMenuSession();
+    }
+  } else {
+    showPage('pageLogin');
+  }
+})();
 </script>
 </body>
 </html>
